@@ -1,0 +1,188 @@
+
+<!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript"></script>
+<title>Insert title here</title>
+<!-- 스타일 시트-->
+<style type="text/css">
+    /* reset */
+	h1, h2, ul, li, p, div {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
+	li{
+	   list-style-type: none;
+	}
+	
+	a{
+	   line-height: 1.5; color: #333;
+	}
+	
+	h1{
+	   font-size: 25px;
+	   color: #cc0;
+	   padding: 10px
+	}
+	
+	h2{
+	   font-size: 20px;
+	}
+	
+	body{
+	   background: #f1f1f1;
+	   font-size: 13px;
+	}
+
+	header {
+		background: coral;
+		text-align: center;
+	}
+
+	.lnb li {
+		background: lightgreen;
+		margin: 10px;
+        padding: 10px;
+	}
+	
+	.content {
+		padding: 20px;
+	}
+	
+	.ext {
+		background: lightgreen;
+		margin: 10px;
+		padding: 20px;
+	}
+	
+	footer {
+		background: #aaa;
+		padding: 10px;
+	}
+	
+	/* 1025이상 PC */
+	@media ( min-width : 1025px) {
+		.wrap{
+		  max-width: 1280px;
+		  margin: 0 auto;
+		}
+		
+		.lnb{
+		  float: left;
+		  width: 20%;
+		}
+		
+		.content{
+		  float: left;
+		  width: 50%;
+		}
+		
+		.aside{
+		  float: right;
+          width: 30%;
+		}
+		
+		footer{
+		  clear: both;
+		}
+	}  
+
+	/* 768 ~ 1024px  테블릿 */
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
+	   .lnb{
+	       float: left;
+	       width: 30%;
+	   }
+	   
+	   .content{
+	       float: left;
+	       width: 70%
+	   }
+	   
+	   .aside{
+	       clear: both;
+	   }
+	   
+	   footer{
+           clear: both;
+        }
+    }
+</style>
+</head>
+<body>
+	<!-- wrap -->
+	<div class="wrap">
+
+		<header>
+			<h1>MINI PROJECT</h1>
+		</header>
+		<!--  container -->
+		<div id="container" class="clear">
+
+			<!-- lnb -->
+			<div class="lnb">
+				<ul>
+					<li><a href="#">교육생 작품</a></li>
+					<li><a href="#">공지사항</a></li>
+					<li><a href="#">교육과정</a></li>
+				</ul>
+			</div>
+			<!-- // lnb---------------------------------------------------- -->
+
+			<!-- content -->
+			<div class="content">
+				<h2>PICTURES</h2>
+				<p>
+					<a href="#">쇼핑몰</a><br>
+				</p>
+				<p>
+					<a href="#">트위터</a><br>
+				</p>
+				<p>
+					<a href="#">영화관</a><br>
+				</p>
+				<p>
+					<a href="#">업무프로그램</a><br>
+				</p>
+				<p>
+					<a href="#">음식소개</a><br>
+				</p>
+				<p>
+					<a href="#">운동</a><br>
+				</p>
+			</div>
+			<!-- // content------------------------------------------------ -->
+
+			<!-- aside -->
+			<div class="aside">
+				<ul class="ext">
+					<li><h2>Spring</h2>
+						<a href="#">DI,AOP,IOC</a></li>
+					<li><h2>Oracle</h2>
+						<a href="#">SQL</a></li>
+					<li><h2>Web</h2>
+						<a href="#">HTML,CSS,JavaScript</a></li>
+				</ul>
+			</div>
+			<!-- // aside-------------------------------------------------- -->
+
+		</div>
+		<!-- // container-------------------------------------------------- -->
+
+		<!-- footer -->
+		<footer>
+			<p>2022 PCWK edu. All rights reserved.</p>
+		</footer>
+		<!-- // footer----------------------------------------------------- -->
+
+	</div>
+	<!-- // wrap----------------------------------------------------------- -->
+</body>
+</html>

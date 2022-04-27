@@ -1,0 +1,63 @@
+<!-- HTML comment -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<style type="text/css">
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<div>
+		<h2>게시-수정</h2>
+		<hr />
+		<!-- 버튼 -->
+		<div>
+			<input type="button" value="수정" id="modify"> 
+			<input type="button" value="삭제" id="delete"> 
+			<input type="button" value="목록" id="moveToList">
+		</div>
+		<!-- // 버튼---------------------------------------------------------- -->
+		<form action="#">
+		  <table border="1">
+		      <tr>
+		          <th width="100"><label for="title">제목</label></th>
+		          <td colspan="3" width="500"><input type="text" name="title" id="title" size="30"></td>
+		      </tr>
+		      <tr>
+                  <th><label for="seq">순번</label></th>
+                  <td><input type="text" name="seq" id="seq" size="30" readonly="readonly"></td>
+              </tr>
+		      <tr>
+                  <th><label for="regId">등록자</label></th>
+                  <td><input type="text" name="regId" id="regId" size="30" readonly="readonly"></td>
+                  <th><label for="modId">수정자</label></th>
+                  <td><input type="text" name="modId" id="modId" size="30"></td>
+              </tr>
+              <tr>
+                  <th><label for="regDt">등록일</label></th>
+                  <td><input type="text" name="regDt" id="regDt" size="30" readonly="readonly"></td>
+                  <th><label for="modDt">수정일</label></th>
+                  <td><input type="text" name="modDt" id="modDt" size="30"></td>
+              </tr>
+              <tr>
+                  <th><label for="readCnt">조회수</label></th>
+                  <td><input type="text" name="readCnt" id="readCnt" size="30" readonly="readonly"></td>
+              </tr>
+              <tr>
+                  <td colspan="4"><label for="contents">내용</label></td>
+              </tr>
+              <tr>
+                  <td colspan="4"><textarea rows="10" cols="90" name="contents" id="contents"></textarea></td>
+              </tr>
+		  </table>
+		</form>
+	</div>
+</body>
+</html>
