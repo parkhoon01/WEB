@@ -1,5 +1,5 @@
 # WEB
-# javascript
+# JavaScript
 
 # 익명함수
 
