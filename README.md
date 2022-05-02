@@ -1,5 +1,6 @@
 # JavaScript
 
+
 # 익명함수
 
 익명함수는 변수에 함수를 저장하여 변수를 마치 함수처럼 사용할 수 있다.
@@ -358,3 +359,90 @@ num01: 11
 num02: 23
 num02: 11
 ```
+
+<hr/>
+
+# 재귀함수
+
+함수 안에서 자신의 함수를 호출
+(종료 조건을 명시해야함.)
+
+```javascript
+'use strict';
+/**
+재귀함수
+
+함수 안에서 자신의 함수를 호출
+(종료 조건을 명시해야함.)
+ */
+ 
+ function factorial(n){
+    // 종료 조건
+    if(n === 0){
+        console.log('호출 끝!');
+    }
+    else{
+        console.log(`n=${n}`);
+        factorial(n-1);
+    }
+}
+
+factorial(4);
+```
+
+결과
+```
+n=4
+n=3
+n=2
+n=1
+호출 끝!
+```
+
+<hr/>
+
+# 클로져(Closure)
+일반적으로 함수 내 지역변수는 함수 밖에서 참조할 수 밖에 없다.
+클로져는 함수 내 지역변수를 함수 밖에서 참조 할 수 있다.
+
+```javascript
+'use strict';
+/**
+클로져(Closure)
+일반적으로 함수 내 지역변수는 함수 밖에서 참조할 수 밖에 없다.
+클로져는 함수 내 지역변수를 함수 밖에서 참조 할 수 있다.
+ */
+
+function add(){
+    let n = 0;
+    return function(){
+        return ++n;
+    }
+}
+
+let increase = add();
+console.log(increase());
+console.log(increase());
+
+
+function multiply(n){
+    return function(){
+        return n*=n;
+    }
+}
+
+let num01 = multiply(10);
+console.log(`num01: ${num01()}`);
+console.log(`num01: ${num01()}`);
+```
+
+결과
+```
+1
+2
+num01: 100
+num01: 10000
+```
+
+<hr/>
+
