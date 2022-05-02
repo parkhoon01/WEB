@@ -1,4 +1,3 @@
-# WEB
 # JavaScript
 
 # 익명함수
@@ -53,7 +52,7 @@ fucntion 함수명(매개변수1, 매개변수2...){
 </code></pre>
 
 ex)
-```
+```javascript
 'use strict';
 
 /*
@@ -128,7 +127,7 @@ showSubject('html', 'css');
 ```
 
 ex)
-```
+```javascript
 'use strict';
 
 function showSubject(){
@@ -180,7 +179,7 @@ doMultiple(90,88);                                  doMultiple(90,88);
 ``` 
 
 ex)
-```
+```javascript
 'use strict';
 
 /*
@@ -207,4 +206,155 @@ const doAdd2 = (s1,s2) =>{
 ```
 (s1,s2) => s1 + s2 : 24
 doAdd2: 12
+```
+
+# default param
+```javascript
+'use strict';
+
+function showMessage(message, from='unknown.'){
+    // from에 값이 없으면
+    if(from === undefined){
+        from = 'unknown';
+    }
+    
+    console.log(`message: ${message}, from:${from}`);
+}
+
+showMessage('hi');
+```
+
+결과
+```
+message: hi, from:unknown.
+```
+
+# call by reference
+```javascript
+'use strict';
+
+function changeName(obj){
+    obj.name = '이상무';
+}
+
+const pcwk = {name:'javascript'};
+
+console.log(`before pcwk: ${pcwk.name}`);
+
+changeName(pcwk);
+
+console.log(`after pcwk: ${pcwk.name}`);
+```
+
+결과
+```
+before pcwk: javascript
+after pcwk: 이상무
+```
+<hr/>
+
+# 전역변수와 지역변수
+전역변수: 함수블럭{} 밖에 선언된 변수(함수 안과 밖에서 자유롭게 사용 가능)
+지역변수: 함수블럭{} 안에 선언된 변수(함수 안에서만 사용가능)
+
+
+```
+            전역변수                              지역변수
+        let 변수;                         function 함수(){
+        function 함수(){                     let 변수;
+        }                                }
+```
+
+ex)
+```javascript
+'use strict';
+/*
+전역변수: 함수블럭{} 밖에 선언된 변수(함수 안과 밖에서 자유롭게 사용 가능)
+ */
+
+let kor = 90;
+
+function getScore(){
+    kor = 100;
+    console.log(`kor: ${kor}`);
+}
+
+getScore();
+
+console.log(`kor: ${kor}`);
+
+console.clear();    // console 로그 지우기
+
+/*
+지역변수: 함수블럭{} 안에 선언된 변수(함수 안에서만 사용가능)
+ */
+let eng = 90;
+
+function getEngScore(){
+    let eng = 100;
+    console.log(`eng: ${eng}`);
+}
+
+getEngScore();
+console.log(`eng: ${eng}`);
+```
+
+
+결과
+```
+Console was cleared
+eng: 100
+eng: 90
+```
+
+<hr/>
+
+# 함수 레벨 스코프와 블록레벨 스코프
+var는 함수{}에서만 지역 변수 존재
+(블록{}, 제어문 블록{}에서는 지역 변수가 존재 하지 않는다.)
+
+let, const는 블록{}, 제어문{}에서도 지역변수를 선언 할 수 있다.
+
+```javascript
+'use strict';
+
+/*
+var는 함수{}에서만 지역 변수 존재
+(블록{}, 제어문 블록{}에서는 지역 변수가 존재 하지 않는다.)
+ */
+
+var num = 11;
+{
+    var num = 20;
+    console.log(`num: ${num}`);
+}
+console.log(`num: ${num}`);
+
+/* 
+let, const는 블록{}, 제어문{}에서도 지역변수를 선언 할 수 있다.
+*/
+
+let num01 = 11;
+{
+    let num01 = 20;
+    console.log(`num01: ${num01}`);
+}
+console.log(`num01: ${num01}`);
+
+const num02 = 11;
+{
+    const num02 = 23;
+    console.log(`num02: ${num02}`);
+}
+console.log(`num02: ${num02}`);
+```
+
+결과
+```
+num: 20
+num: 20
+num01: 20
+num01: 11
+num02: 23
+num02: 11
 ```
