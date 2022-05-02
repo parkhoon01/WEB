@@ -1,5 +1,5 @@
 # JavaScript
-
+https://developer.mozilla.org/ko/docs/Web/JavaScript
 
 # 익명함수
 
@@ -446,3 +446,91 @@ num01: 10000
 
 <hr/>
 
+# 내장함수
+
+자바스크립트에 내장되어 있는 함수들
+
+## 인코딩, 디코딩
+
+|함수명|설명|
+|---|:---:|
+|`encodeURIComponenet()`|영문, 숫자, (,), -, ., ~, * !를 제외한 문자를 인코딩.|
+|`decodeURIComponenet()`|encodeURIComponenet()의 디코딩 함수.
+
+ex)
+```javascript
+'use strict';
+
+let str01 = 'pcwk_자바스크립트';
+
+console.log(`str01: ${str01}`);
+
+let encodeStr = encodeURIComponent(str01);
+console.log(`encodeStr: ${encodeStr}`);
+
+let decodeStr = decodeURIComponent(encodeStr);
+console.log(`decodeStr: ${decodeStr}`);
+
+```
+
+결과
+```
+str01: pcwk_자바스크립트
+encodeStr: pcwk_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8
+decodeStr: pcwk_자바스크립트
+```
+
+## 숫자, 유/무한 값 판별
+
+|함수명|설명|
+|---|:---:|
+|`isNaN()`|숫자가 아니면 true, 그렇지 않으면 false|
+|`isFinite()`|유한값이면 true, 그렇지 않으면 false|
+
+ex)
+```javascript
+'use strict';
+
+let num01 = '100F';
+
+if(isNaN(num01) == true){
+    console.log(`숫자가 아니면: ${isNaN(num01)}`);
+}
+else{
+    console.log(`숫자이면: ${isNaN(num01)}`);
+}
+
+let num02 = 1/0;
+if(isFinite(num02) == true){
+    console.log(`유한이면: ${isFinite(num02)}`);
+}
+else{
+    console.log(`무한이면: ${isFinite(num02)}`);
+}
+```
+
+결과
+```
+숫자가 아니면: true
+무한이면: false
+```
+
+# 숫자 문자 변환함수
+
+|함수명|설명|
+|---|:---:|
+|`Number()`|숫자로 변환해 주는 함수|
+|`parseInt()`|문자를 숫자로 변환해 주는 함수|
+|`parseFloat()`|문자를 실수로 변환해 주는 함수|
+|`String()`|문자로 변환해 주는 함수|
+
+ex)
+```javascript
+
+```
+
+
+결과
+```
+
+```
