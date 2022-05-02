@@ -660,7 +660,7 @@ info.printOut: javascript, 5
 
 ## 객체 리터럴의 속성 추가, 삭제, 변경
 
-```javascrpt
+```javascript
 'use strict';
 
 let info = {
