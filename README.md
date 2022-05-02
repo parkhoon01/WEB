@@ -480,6 +480,8 @@ encodeStr: pcwk_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8
 decodeStr: pcwk_자바스크립트
 ```
 
+<hr/>
+
 ## 숫자, 유/무한 값 판별
 
 |함수명|설명|
@@ -515,7 +517,9 @@ else{
 무한이면: false
 ```
 
-# 숫자 문자 변환함수
+<hr/>
+
+## 숫자 문자 변환함수
 
 |함수명|설명|
 |---|:---:|
@@ -526,11 +530,174 @@ else{
 
 ex)
 ```javascript
+'use strict';
 
+let str01 = '11';
+
+console.log(`str01: ${str01}, type: ${typeof str01}`);
+
+// Number(): 문자형 숫자를 숫자로 변환
+console.log(`str01: ${Number(str01)}, type: ${typeof Number(str01)}`);
+
+
+// parseInt(): 문자를 숫자로 변환(22px -> 22)
+let str02 = '100px';
+console.log(`str02: ${str02}, type: ${typeof str02}`);
+console.log(`str02: ${parseInt(str02)}, type: ${typeof parseInt(str02)}`);
+
+// parseFloat(): 문자를 실수로 변환(33.33% -> 33.33)
+let str03 = '33.33%';
+console.log(`str03: ${str03}, type: ${typeof str03}`);
+console.log(`str03: ${parseFloat(str03)}, type: ${typeof parseFloat(str03)}`);
 ```
 
 
 결과
 ```
+str01: 11, type: string
+str01: 11, type: number
+str02: 100px, type: string
+str02: 100, type: number
+str03: 33.33%, type: string
+str03: 33.33, type: number
+```
 
+<hr/>
+
+## 자바스크립트 코드 변경 함수
+
+문자를 자바스크립트 코드로 변경
+> 절대 사용하지 말것! 해킹 위험이 있음
+
+
+|함수명|설명|
+|---|:---:|
+|`eval()`|문자를 자바스크립트 코드로 변경|
+
+ex)
+```javascript
+//'use strict';
+
+// 문자를 자바스크립트 코드로 변경
+
+// let 변수는 안됨, var 변수만 가능
+
+var str01 = 'var num01 = 11';
+var str02 = 'var num02 = 13';
+
+eval(str01);
+eval(str02);
+// num01 + num02 = 24
+
+console.log(`num01 + num02= ${num01+num02}`);
+```
+
+결과
+```
+num01 + num02= 24
+```
+
+<hr/>
+
+## 객체
+
+변수는 데이터 값을 하나 밖에 저장 하지 못하지만, 객체는 데이터값을 필요한 만큼 만들어 사용할 수 있다.
+
+객체의 데이터는 ``이름: 값``있으면 이것을 속성(properties)이라고 한다.
+
+```
+ex)
+let 변수이름 = {name:'이상무', age:20, nationality:'대한민국'};
+```
+
+|객체의 분류|종류|설명|
+|---|:---:|:---:|
+|사용자 정의 객체|객체리터럴|사용자 정의 함수|
+||객체 생성자 함수||
+||클래스(ECMAScript 2015(ES6)||
+|내장 객체|Number|자바스크립트에서 제공해 주는 객체|
+||String||
+||Array||
+||Math||
+||Date||
+||RegRexp||
+
+## 객체 리터럴과 객체 생성자 함수로 만들 수 있다.
+
+```
+ex)
+let 변수 = {
+  프로퍼티 값1 : 값,
+  프로퍼티 값2 : 값
+  
+  메서드: function(){
+         }
+}
+```
+```javascript
+'use strict';
+
+let info = {
+    
+    subject: 'javascript',
+    credit: 5,
+    printOut: function(){
+        return this.subject + ', ' + this.credit;
+    }
+};
+
+console.log(`info.subject: ${info.subject}`);
+console.log(`info.credit: ${info.credit}`);
+console.log(`info.printOut: ${info.printOut()}`);
+```
+
+결과
+```
+info.subject: javascript
+info.credit: 5
+info.printOut: javascript, 5
+```
+
+## 객체 리터럴의 속성 추가, 삭제, 변경
+
+```javascrpt
+'use strict';
+
+let info = {
+    
+    subject: 'javascript',
+    credit: 5,
+    printOut: function(){
+        return this.subject + ', ' + this.credit;
+    }
+};
+
+console.log(`info.subject: ${info.subject}`);
+console.log(`info.credit: ${info.credit}`);
+console.log(`info.printOut: ${info.printOut()}`);
+
+// 속성 추가
+info.days = 7;
+console.log(`info.days: ${info.days}`);
+
+// 속성 삭제
+delete info.credit;
+console.log(`info.credit: ${info.credit}`);
+
+// 메서드 속성 변경
+info.printOut = function(){
+    return this.subject + ', ' + this.days;
+}
+
+console.log(`info.printOut(): ${info.printOut()}`);
+```
+
+결과
+```
+info.subject: javascript
+info.credit: 5
+info.printOut: javascript, 5
+info.days: 7
+info.credit: undefined
+info.printOut(): javascript, 7
 ```
