@@ -845,3 +845,136 @@ console.log(`triangle01.printOut: ${triangle01.printOut()}`);
 triangle.area: 50
 triangle01.printOut: 밑변:10, 높이:10, 넓이:50
 ```
+
+##for..in 문
+객체에 속성에 쉽게 접근 가능
+
+```
+형식)
+for(let 변수 in 객체명){
+  실행문;
+}
+```
+
+j06/j03
+```javascript
+'use strict';
+
+let info = {
+    subject: 'JavaScript',
+    credit: 3,
+    days: 20,
+    tuition: 100
+}
+
+
+for(let i in info){
+    console.log(`i=${i}, \t info[${i}]=${info[i]}`);    
+}
+```
+
+결과
+```
+i=subject, 	 info[subject]=JavaScript
+i=credit, 	 info[credit]=3
+i=days, 	 info[days]=20
+i=tuition, 	 info[tuition]=100
+```
+
+## class
+
+ECMAScript 2015(ES6)에서 새로 추가
+객체 생성, 상속도 가능.
+
+```
+class 클래스명{
+  constructor(매개변수01, 매개변수02, ...){
+    this.이름01 = 매개변수01;
+    this.이름02 = 매개변수02;
+  }
+  메서드(){}
+  
+  get 메서드(){}
+  
+  set 메서드(){}
+}
+
+let 변수01 = new 클래스명(매개변수01, 매개변수02,...);
+let 변수02 = new 클래스명(매개변수01, 매개변수02,...);
+```
+
+j06/j04.js
+```javascript
+'use strict';
+
+class Person{
+    // 생성자
+    constructor(name, age){
+        //멤버변수
+        this.name = name;
+        this.age = age;
+    }
+    // 메서드
+    speak(){
+        console.log(`name: ${this.name}, age: ${this.age} speak!`);
+    }
+}
+
+const pcwk = new Person('PCWK',23);
+// 멤버변수
+console.log(`pcwk.name: ${pcwk.name}, pcwk.age: ${pcwk.age}`);
+pcwk.speak();
+```
+
+결과
+```
+pcwk.name: PCWK, pcwk.age: 23
+name: PCWK, age: 23 speak!
+```
+
+## User class생성, get, set 사용
+
+j06/j05.js
+```javascript
+'use strict';
+
+class User{
+    //생성자
+    constructor(name,passwd,age){
+        this.name = name;
+        this.passwd = passwd;
+        this.age = age;
+    }
+    get getAge(){
+        return this.age;
+    }
+    
+    set setAge(value){
+        if(value < 0){
+            value = 0;
+        }
+        
+        this.age = value;
+    }
+}
+
+const user01 = new User('PCWK','1234',-1);
+
+console.log(`name: ${user01.name}`);
+console.log(`pass: ${user01.pass}`);
+console.log(`age: ${user01.age}`);
+
+// setter
+user01.setAge = -1;
+
+// getter
+console.log(`age: ${user01.getAge}`);
+```
+
+결과
+```
+name: PCWK
+pass: undefined
+age: -1
+age: 0
+```
