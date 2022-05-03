@@ -1212,7 +1212,7 @@ console.log(phoneNumArray[0]+''+phoneNumArray[1]+''+phoneNumArray[2]);
 
 // replace('x','y') : 'x'문자를 'y'문자로 치환
 str = 'Javascript';
-console.log(`str.replace('a','A'): ${str.replaceAll('a','A')}`);
+console.log(`str.replaceAll('a','A'): ${str.replaceAll('a','A')}`);
 
 // trim(): 문자열의 앞뒤 공백 제거
 str = ' Javascript ';
@@ -1239,3 +1239,15 @@ str.trim(): Javascript
 str.toUpperCase():  JAVASCRIPT 
 str.toLowerCase():  javascript
 ```
+<hr/>
+
+# Bootstrap
+
+## 부트스트랩이란?
+
+부트스트랩(Bootstrap)은 웹사이트를 쉽게 만들 수 있게 도와주는 HTML, CSS, JS 프레임워크이다. 하나의 CSS로 휴대폰, 태블릿, 데스크탑까지 다양한 기기에서 작동한다. 다양한 기능을 제공하여 사용자가 쉽게 웹사이트를 제작, 유지, 보수할 수 있도록 도와준다.
+
+http://bootstrapk.com/getting-started/
+
+적용하기
+
