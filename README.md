@@ -1038,7 +1038,7 @@ class child extends parents{
 }
 ```
 
-<img src=""></img>
+<img src="https://user-images.githubusercontent.com/104181668/166396221-fe0aeebb-4f8c-453c-9bc2-a2a70970915e.png"></img>
 
 j06/j07.js
 ```javascript
