@@ -1249,5 +1249,13 @@ str.toLowerCase():  javascript
 
 http://bootstrapk.com/getting-started/
 
-적용하기
+# 적용하기
 
+부트스트랩 사이트에서 소스코드 다운 받은후 압축풀기
+<img src="https://user-images.githubusercontent.com/104181668/166411526-3b096878-8323-49a9-a92f-8c3a82c95f65.png"></img>
+
+이클립스에서 새로운 폴더 만들기
+<img src="https://user-images.githubusercontent.com/104181668/166411759-5b9ab3fc-8122-44a2-a4c1-150f1f323abe.png"></img>
+
+새로운 bootstrap_index.html파일 만든후 CDN소스코드 복붙하기
+<img src="https://user-images.githubusercontent.com/104181668/166411810-b044aa35-673b-4f8d-8df1-db7a17985595.png"></img>
