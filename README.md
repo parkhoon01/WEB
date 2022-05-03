@@ -1165,3 +1165,12 @@ num.toFixed(2): 328.57
 num.toFixed(): 329
 num.toString(2): 1100
 ```
+
+## String 객체
+내장 객체중 가장 많이 사용하는 객체입니다.
+
+```
+let str = new String('자바스크립트');
+let str = '자바스크립트';
+```
+
