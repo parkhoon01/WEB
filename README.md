@@ -753,3 +753,95 @@ subject02.subject: css
 subject02.credit: 5
 subject02.printOut(): css, 5
 ```
+
+j06/j01.js
+
+```javascript
+'use strict';
+
+// 객체 리터럴
+
+let circle = {
+    color : 'yellow',
+    diameter : 100,
+    radius : function(){
+        return this.diameter/2;
+    }
+};
+
+console.log(`circle.color: ${circle.color}`);
+console.log(`circle.diameter: ${circle.diameter}`);
+console.log(`circle.radius(): ${circle.radius()}`);
+
+// 객체 생성자 함수
+
+function Triangle(b,h){
+    this.base = b;
+    this.height = h;
+    this.area = function(){
+        return this.base * this.height /2;
+        
+    };
+}
+
+let triangle01 = new Triangle(10,10);
+let triangle02 = new Triangle(20,10);
+
+console.log(`triangle01.base: ${triangle01.base}`);
+console.log(`triangle01.height: ${triangle01.height}`);
+console.log(`triangle01.area(): ${triangle01.area()}`);
+
+console.log(`triangle02.base: ${triangle02.base}`);
+console.log(`triangle02.height: ${triangle02.height}`);
+console.log(`triangle02.area(): ${triangle02.area()}`);
+```
+
+결과
+```
+circle.color: yellow
+circle.diameter: 100
+circle.radius(): 50
+triangle01.base: 10
+triangle01.height: 10
+triangle01.area(): 50
+triangle02.base: 20
+triangle02.height: 10
+triangle02.area(): 100
+```
+
+## prototype
+
+prototype을 이용하면 객체의 메서드를 생성자 함수 내에 정의 하지 않고도 생성된 객체에서 호출 가능.
+
+j06/j02.js
+```javascript
+'use strict';
+
+//prototype을 이용하면 객체의 메서드를 생성자 함수 내에 정의 하지 않고도 생성된 객체에서 호출 가능.
+
+// 생성자 함수
+function Triangle(b,h){
+    this.base = b;
+    this.height = h;
+}
+
+// 동적 추가된 함수
+Triangle.prototype.area = function(){
+    return this.base * this.height / 2;
+};
+
+// 동적 추가된 함수
+Triangle.prototype.printOut = function(){
+    return '밑변:' + this.base + ', 높이:' + this.height + ', 넓이:' + this.area(); 
+};
+
+let triangle01 = new Triangle(10,10);
+console.log(`triangle.area: ${triangle01.area()}`);
+console.log(`triangle01.printOut: ${triangle01.printOut()}`);
+```
+
+결과
+```
+triangle.area: 50
+triangle01.printOut: 밑변:10, 높이:10, 넓이:50
+```
