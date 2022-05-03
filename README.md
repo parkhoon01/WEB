@@ -1135,6 +1135,7 @@ let num = 13;
 |toFixed()|toFixed(n)일때 n값 만큼의 소수점 자릿수를 만들어준다.<br>(자릿수 이전 값은 반올림)|
 |toString()|toString(n)일때 n값의 진수로 만들어 줍니다.|
 
+j06/j08.js
 ```javascript
 'use strict';
 
@@ -1169,8 +1170,72 @@ num.toString(2): 1100
 ## String 객체
 내장 객체중 가장 많이 사용하는 객체입니다.
 
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String
+
 ```
 let str = new String('자바스크립트');
 let str = '자바스크립트';
 ```
 
+j06/j09.js
+```javascript
+'use strict';
+
+let str = 'Javascript';
+console.log(`str: ${str}`);
+
+// length: 문자열의 길이
+console.log(`str.length: ${str.length}`);
+
+// charAt(n): n과 같은 index번호에 위치한 문자를 반환
+console.log(`str.charAt(8): ${str.charAt(8)}`);
+
+// indexOf('a')
+// 'a'를 왼쪽부터 문자를 검색해서 일치하는 index에 해당하는 문자 반환
+console.log(`str.indexOf('a'): ${str.indexOf('a')}`);
+
+// lastIndexOf('a')
+// 'a'를 오른쪽부터 문자를 검색해서 일치하는 index에 해당하는 문자 반환
+console.log(`str.lastIndexOf('a'): ${str.lastIndexOf('a')}`);
+
+// substring(4,9): 문자열 index번호 4부터 index 9이전까지 출력
+// str.substring(4,9): script 끝번호는 포함되지 않음
+console.log(`str.substring(4,9): ${str.substring(4,9)}`);
+
+// substr(4,6): index번호 4번부터 6개의 문자
+console.log(`str.substr(4,6): ${str.substr(4,6)}`);
+
+// split('') ''(공백) 문자를 기준으로 문자열을 분할하고 return 배열
+str = '010-1234-5678';
+let phoneNumArray = str.split('-');
+console.log(phoneNumArray[0]+''+phoneNumArray[1]+''+phoneNumArray[2]);
+
+// replace('x','y') : 'x'문자를 'y'문자로 치환
+str = 'Javascript';
+console.log(`str.replace('a','A'): ${str.replaceAll('a','A')}`);
+
+// trim(): 문자열의 앞뒤 공백 제거
+str = ' Javascript ';
+console.log(`str.trim(): ${str.trim()}`);
+
+// toLowerCase(): 소문자로
+// toUpperCase(): 대문자로
+console.log(`str.toUpperCase(): ${str.toUpperCase()}`);
+console.log(`str.toLowerCase(): ${str.toLowerCase()}`);
+```
+
+결과
+```
+str: Javascript
+str.length: 10
+str.charAt(8): p
+str.indexOf('a'): 1
+str.lastIndexOf('a'): 3
+str.substring(4,9): scrip
+str.substr(4,6): script
+01012345678
+str.replace('a','A'): JAvAscript
+str.trim(): Javascript
+str.toUpperCase():  JAVASCRIPT 
+str.toLowerCase():  javascript
+```
