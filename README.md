@@ -811,7 +811,7 @@ triangle02.area(): 100
 
 <hr/>
 
-# prototype
+## prototype
 
 prototype을 이용하면 객체의 메서드를 생성자 함수 내에 정의 하지 않고도 생성된 객체에서 호출 가능.
 
@@ -983,4 +983,69 @@ name: PCWK
 pass: undefined
 age: -1
 age: 0
+```
+
+<hr/>
+
+## callback function
+
+자바스크립트 함수는 일급객체(first-class object)
+
+함수의 파람으로 함수가 전달!
+
+1급 객체란?
+아래 3 가지조건을 충족한다면 1급 객체라고 할수 있습니다.
+- 변수나 데이타에 할당 할 수 있어야 한다.
+- 객체의 인자로 넘길 수 있어야 한다.
+- 객체의 리턴값으로 리턴 할수 있어야 한다.
+
+j06/j06.js
+```javascript
+'use strict';
+
+// 더하기
+function add(num01, num02){
+    return num01 + num02;
+}
+
+// 곱하기
+function multiply(num1, num2){
+    return num1 * num2;
+}
+
+function surprise(callback){
+    const result = callback(11,10);
+    
+    console.log(`result: ${result}`);
+}
+
+//
+surprise(add);
+surprise(multiply);
+```
+
+결과
+```
+result: 21
+result: 110
+```
+
+## 상속
+
+```
+class child extends parents{
+
+}
+```
+
+<img src=""></img>
+
+j06/j07.js
+```javascript
+
+```
+
+결과
+```
+
 ```
