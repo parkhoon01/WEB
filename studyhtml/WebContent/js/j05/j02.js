@@ -28,6 +28,8 @@ info.printOut = function(){
 
 console.log(`info.printOut(): ${info.printOut()}`);
 
+
+// 생성자 함수
 function Info(subject, credit){
     this.subject = subject;
     this.credit = credit;
