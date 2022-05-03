@@ -1117,3 +1117,51 @@ triangle.toString(): Triangle: color: yellow}
 triangle instanceof shape: true
 triangle instanceof rectangle: false
 ```
+
+
+# 내장객체
+Number, String, Array, Math, Date, RegExp, Set, Map
+
+
+```
+생성방법
+let num = new Number(11);
+
+let num = 13;
+```
+
+|메서드|설명|
+|---|:---:|
+|toFixed()|toFixed(n)일때 n값 만큼의 소수점 자릿수를 만들어준다.<br>(자릿수 이전 값은 반올림)|
+|toString()|toString(n)일때 n값의 진수로 만들어 줍니다.|
+
+```javascript
+'use strict';
+
+// Number 객체 생성
+let num01 = new Number(10);
+
+let num02 = 12;
+
+console.log(`num01+num02 = ${num01+num02}`);
+
+let num = 328.575;
+// toFixed() : toFixed(n)일 때 n값 만큼의 소수점 자릿수를 만들어 준다.
+console.log(`num.toFixed(1): ${num.toFixed(1)}`);
+console.log(`num.toFixed(2): ${num.toFixed(2)}`);
+console.log(`num.toFixed(): ${num.toFixed()}`);
+
+num = 12;
+
+//toString(n)일때 n값의 진수로 만들어 줍니다.
+console.log(`num.toString(2): ${num.toString(2)}`);
+```
+
+결과
+```
+num01+num02 = 22
+num.toFixed(1): 328.6
+num.toFixed(2): 328.57
+num.toFixed(): 329
+num.toString(2): 1100
+```
