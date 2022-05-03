@@ -809,7 +809,9 @@ triangle02.height: 10
 triangle02.area(): 100
 ```
 
-## prototype
+<hr/>
+
+# prototype
 
 prototype을 이용하면 객체의 메서드를 생성자 함수 내에 정의 하지 않고도 생성된 객체에서 호출 가능.
 
@@ -845,6 +847,7 @@ console.log(`triangle01.printOut: ${triangle01.printOut()}`);
 triangle.area: 50
 triangle01.printOut: 밑변:10, 높이:10, 넓이:50
 ```
+<hr/>
 
 ##for..in 문
 객체에 속성에 쉽게 접근 가능
@@ -880,6 +883,7 @@ i=credit, 	 info[credit]=3
 i=days, 	 info[days]=20
 i=tuition, 	 info[tuition]=100
 ```
+<hr/>
 
 ## class
 
@@ -931,6 +935,8 @@ pcwk.speak();
 pcwk.name: PCWK, pcwk.age: 23
 name: PCWK, age: 23 speak!
 ```
+
+<hr/>
 
 ## User class생성, get, set 사용
 
