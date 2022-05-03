@@ -1252,5 +1252,7 @@ str.toLowerCase():  javascript
 Content Delivery Network의 약자인 CDN은 지리적 제약 없이 전 세계 사용자에게 빠르고 안전하게 콘텐츠를 전송할 수 있는 콘텐츠 전송 기술
 
 [Bootstrap]http://bootstrapk.com/getting-started/
+
 [jquery]https://jquery.com/
-[사용한 jquery]https://releases.jquery.com/
+
+[jquery CDN]https://releases.jquery.com/
