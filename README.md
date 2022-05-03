@@ -1098,6 +1098,12 @@ const triangle = new Triangle(10,10,'yellow');
 triangle.draw();
 console.log(`triangle.getArea(): ${triangle.getArea()}`);
 console.log(`triangle.toString(): ${triangle.toString()}`);
+
+// instanceof
+console.log(`triangle instanceof shape: ${triangle instanceof Shape}`);
+
+// 사각형, 삼각형
+console.log(`triangle instanceof rectangle: ${triangle instanceof Rectangle}`);
 ```
 
 결과
@@ -1108,4 +1114,6 @@ drawing: yellow color!
 Triangle drawing Blue color!
 triangle.getArea(): 50
 triangle.toString(): Triangle: color: yellow}
+triangle instanceof shape: true
+triangle instanceof rectangle: false
 ```
