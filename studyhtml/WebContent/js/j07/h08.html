@@ -1,0 +1,32 @@
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		
+		console.log(`window.onload`);
+		
+		let btn = document.getElementById('btn');
+		btn.onclick = function() {
+			alert('btn.onclick');
+		}
+	} 
+</script>
+</head>
+<body>
+	<h2>기본 이벤트 모델</h2>
+	<hr/>
+	<button id="btn">클릭</button>
+</body>
+</html>
