@@ -1257,9 +1257,95 @@ Content Delivery Network의 약자인 CDN은 지리적 제약 없이 전 세계 
 
 [jquery CDN]https://releases.jquery.com/
 
+<hr/>
+
 # Array
 
 객체 리터럴처럼 변수에 데이터 값을 필요한 만큼 저장할 수 있다.
 저장된 값에는 자동으로 index가 부여된다.
 
+```
+ex)
+  let subject = new Array(10,20,'javascript','css');
+  let subject = [10,20,'javascript','css'];
+  length : 배열의 길이 return
+```
 
+j07/j01.js
+```javascript
+'use strict';
+
+let subject = [11,13,'html','javascript','jquery'];
+
+console.log(`subject[0]: ${subject[0]}`);
+
+// 배열에 길이
+console.log(`subject.length: ${subject.length}`)
+
+// 대문자로 변경
+subject[3] = subject[3].toUpperCase();
+console.log(`subject[3]: ${subject[3]}`);
+
+// 배열에 값을 for문을 이용해 모두 출력
+for(let i=0; i<subject.length; i++){
+    console.log(`subject[${i}]: ${subject[i]}`);
+}
+
+// 배열에 요소 추가: push('jsp');
+let newLength = subject.push('jsp');
+console.log(`newLenght: ${newLength}`);
+
+for(let i=0; i<subject.length; i++){
+    console.log(`subject[${i}]: ${subject[i]}`);
+}
+
+// toString(): 배열을 문자열로 변환
+console.log(`{subject.toString: ${subject.toString()}}`)
+
+// join('-'): 배열의 요소를 '-'로 연결
+console.log(`subject.join('-'): ${subject.join('-')}`);
+
+// 배열과 배열의 결합: concat()
+let alpha01 = ['a','b','c'];
+let alpha02 = ['D','E','Z'];
+console.log(`alpha01.concat(alpha02): ${alpha01.concat(alpha02)}`);
+```
+
+결과
+```
+subject[0]: 11
+subject.length: 5
+subject[3]: JAVASCRIPT
+subject[0]: 11
+subject[1]: 13
+subject[2]: html
+subject[3]: JAVASCRIPT
+subject[4]: jquery
+newLenght: 6
+subject[0]: 11
+subject[1]: 13
+subject[2]: html
+subject[3]: JAVASCRIPT
+subject[4]: jquery
+subject[5]: jsp
+{subject.toString: 11,13,html,JAVASCRIPT,jquery,jsp}
+subject.join('-'): 11-13-html-JAVASCRIPT-jquery-jsp
+alpha01.concat(alpha02): a,b,c,D,E,Z
+```
+
+## 배열 요소 접근 명령문 및 메서드
+
+```
+for ... in
+  배열의 인덱스를 반환
+```
+
+j07/j02.js
+```javascript
+
+```
+
+결과
+```
+
+```
