@@ -754,7 +754,7 @@ subject02.credit: 5
 subject02.printOut(): css, 5
 ```
 
-j06/j01.js
+WEB/studyhtml/WebContent/js/j06/j01.js
 
 ```javascript
 'use strict';
@@ -815,7 +815,7 @@ triangle02.area(): 100
 
 prototype을 이용하면 객체의 메서드를 생성자 함수 내에 정의 하지 않고도 생성된 객체에서 호출 가능.
 
-j06/j02.js
+WEB/studyhtml/WebContent/js/j06/j02.js
 ```javascript
 'use strict';
 
@@ -859,7 +859,7 @@ for(let 변수 in 객체명){
 }
 ```
 
-j06/j03
+WEB/studyhtml/WebContent/js/j06/j03
 ```javascript
 'use strict';
 
@@ -907,7 +907,7 @@ let 변수01 = new 클래스명(매개변수01, 매개변수02,...);
 let 변수02 = new 클래스명(매개변수01, 매개변수02,...);
 ```
 
-j06/j04.js
+WEB/studyhtml/WebContent/js/j06/j04.js
 ```javascript
 'use strict';
 
@@ -940,7 +940,7 @@ name: PCWK, age: 23 speak!
 
 ## User class생성, get, set 사용
 
-j06/j05.js
+WEB/studyhtml/WebContent/js/j06/j05.js
 ```javascript
 'use strict';
 
@@ -999,7 +999,7 @@ age: 0
 - 객체의 인자로 넘길 수 있어야 한다.
 - 객체의 리턴값으로 리턴 할수 있어야 한다.
 
-j06/j06.js
+WEB/studyhtml/WebContent/js/j06/j06.js
 ```javascript
 'use strict';
 
@@ -1040,7 +1040,7 @@ class child extends parents{
 
 <img src="https://user-images.githubusercontent.com/104181668/166396221-fe0aeebb-4f8c-453c-9bc2-a2a70970915e.png"></img>
 
-j06/j07.js
+WEB/studyhtml/WebContent/js/j06/j07.js
 ```javascript
 'use strict';
 
@@ -1135,7 +1135,7 @@ let num = 13;
 |toFixed()|toFixed(n)일때 n값 만큼의 소수점 자릿수를 만들어준다.<br>(자릿수 이전 값은 반올림)|
 |toString()|toString(n)일때 n값의 진수로 만들어 줍니다.|
 
-j06/j08.js
+WEB/studyhtml/WebContent/js/j06/j08.js
 ```javascript
 'use strict';
 
@@ -1177,7 +1177,7 @@ let str = new String('자바스크립트');
 let str = '자바스크립트';
 ```
 
-j06/j09.js
+WEB/studyhtml/WebContent/js/j06/j09.js
 ```javascript
 'use strict';
 
@@ -1256,3 +1256,654 @@ Content Delivery Network의 약자인 CDN은 지리적 제약 없이 전 세계 
 [jquery]https://jquery.com/
 
 [jquery CDN]https://releases.jquery.com/
+
+<hr/>
+
+# Array
+
+객체 리터럴처럼 변수에 데이터 값을 필요한 만큼 저장할 수 있다.
+저장된 값에는 자동으로 index가 부여된다.
+
+```
+ex)
+  let subject = new Array(10,20,'javascript','css');
+  let subject = [10,20,'javascript','css'];
+  length : 배열의 길이 return
+```
+
+WEB/studyhtml/WebContent/js/j07/j01.js
+```javascript
+'use strict';
+
+let subject = [11,13,'html','javascript','jquery'];
+
+console.log(`subject[0]: ${subject[0]}`);
+
+// 배열에 길이
+console.log(`subject.length: ${subject.length}`)
+
+// 대문자로 변경
+subject[3] = subject[3].toUpperCase();
+console.log(`subject[3]: ${subject[3]}`);
+
+// 배열에 값을 for문을 이용해 모두 출력
+for(let i=0; i<subject.length; i++){
+    console.log(`subject[${i}]: ${subject[i]}`);
+}
+
+// 배열에 요소 추가: push('jsp');
+let newLength = subject.push('jsp');
+console.log(`newLenght: ${newLength}`);
+
+for(let i=0; i<subject.length; i++){
+    console.log(`subject[${i}]: ${subject[i]}`);
+}
+
+// toString(): 배열을 문자열로 변환
+console.log(`{subject.toString: ${subject.toString()}}`)
+
+// join('-'): 배열의 요소를 '-'로 연결
+console.log(`subject.join('-'): ${subject.join('-')}`);
+
+// 배열과 배열의 결합: concat()
+let alpha01 = ['a','b','c'];
+let alpha02 = ['D','E','Z'];
+console.log(`alpha01.concat(alpha02): ${alpha01.concat(alpha02)}`);
+```
+
+결과
+```
+subject[0]: 11
+subject.length: 5
+subject[3]: JAVASCRIPT
+subject[0]: 11
+subject[1]: 13
+subject[2]: html
+subject[3]: JAVASCRIPT
+subject[4]: jquery
+newLenght: 6
+subject[0]: 11
+subject[1]: 13
+subject[2]: html
+subject[3]: JAVASCRIPT
+subject[4]: jquery
+subject[5]: jsp
+{subject.toString: 11,13,html,JAVASCRIPT,jquery,jsp}
+subject.join('-'): 11-13-html-JAVASCRIPT-jquery-jsp
+alpha01.concat(alpha02): a,b,c,D,E,Z
+```
+
+## 배열 요소 접근 명령문 및 메서드
+
+```
+for ... in
+  배열의 인덱스를 반환
+```
+
+WEB/studyhtml/WebContent/js/j07/j02.js
+```javascript
+'use strict';
+
+let city = ['미국','영국','일본','필리핀','아이슬란드'];
+
+for(let i in city){
+    console.log(`i: ${i}, city[${i}]:${city[i]}`);
+}
+
+// for ... of문
+for(let i of city){
+    console.log(`i: ${i}`);
+}
+```
+
+결과
+```
+i: 0, city[0]:미국
+j02.js:6 i: 1, city[1]:영국
+j02.js:6 i: 2, city[2]:일본
+j02.js:6 i: 3, city[3]:필리핀
+j02.js:6 i: 4, city[4]:아이슬란드
+j02.js:11 i: 미국
+j02.js:11 i: 영국
+j02.js:11 i: 일본
+j02.js:11 i: 필리핀
+j02.js:11 i: 아이슬란드
+```
+
+## forEach()
+
+배열의 요소에 순차적으로 접근하여 필요한 값을 만들때 사용하는 메서드
+
+WEB/studyhtml/WebContent/js/j07/j03.js
+```javascript
+'use strict';
+
+let numArray = [1,2,3,4,5,6,7];
+let sum = 0;
+
+numArray.forEach(function(value,index,array){
+//    console.log(`value: ${value}`);
+//    console.log(`index: ${index}`);
+//    console.log(`index: ${index},${array}`);
+    sum += value;
+});
+
+console.log(`sum=${sum}`);
+
+// map() : 기존 배열을 이용해 새로운 배열을 생성
+
+let base = [1,2,3];
+
+let newArray = base.map(function(value,index,array){
+    console.log(`value: ${value}, index: ${index}, array: ${array}`);
+    return value*2;
+});
+
+console.log(`newArray: ${newArray.toString()}`);
+
+// filter() : 조건에 맞는 배열의 요소들만 걸러 새로운 배열 생성
+
+let data = ['JAVASCRIPT',20,30,'JQUERY'];
+
+let numArray02 = data.filter(function(value,index,array){
+   console.log(`value: ${value}, index: ${index}, array: ${array}`); 
+   console.log(`type: ${typeof value}`);
+   return typeof value == 'number';
+});
+
+console.log(`${numArray02.toString()}`);
+```
+
+결과
+```
+sum=28
+value: 1, index: 0, array: 1,2,3
+value: 2, index: 1, array: 1,2,3
+value: 3, index: 2, array: 1,2,3
+newArray: 2,4,6
+value: JAVASCRIPT, index: 0, array: JAVASCRIPT,20,30,JQUERY
+type: string
+value: 20, index: 1, array: JAVASCRIPT,20,30,JQUERY
+type: number
+value: 30, index: 2, array: JAVASCRIPT,20,30,JQUERY
+type: number
+value: JQUERY, index: 3, array: JAVASCRIPT,20,30,JQUERY
+type: string
+20,30
+```
+
+# Math
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+Math는 수학적인 상수와 함수를 위한 속성과 메서드를 가진 내장 객체입니다. 함수 객체가 아닙니다.
+
+```
+Math.프로퍼티
+Math.메서드
+```
+
+WEB/studyhtml/WebContent/js/j07/j04.js
+```javascript
+'use strict';
+
+// 1~100 배열 설정, 이중에 행운의 숫자 1개 출력
+
+let luckyNumber = [];
+for(let i=1; i<=100; i++){
+    luckyNumber.push(i);
+}
+
+console.log(`luckyNumber.toString():${luckyNumber.toString()}`);
+
+//Math.random() 함수는 0 이상 1 미만의 구간에서 근사적으로 균일한(approximately uniform) 부동소숫점 의사난수를 반환하며, 이 값은 사용자가 원하는 범위로 변형할 수 있다.
+// 난수 생성 알고리즘에 사용되는 초기값은 구현체가 선택하며, 사용자가 선택하거나 초기화할 수 없다.
+
+console.log(`Math.random(): ${Math.floor(Math.random() * luckyNumber.length)}`);
+let idx = Math.floor(Math.random() * luckyNumber.length);
+console.log(`luckyNumber: ${luckyNumber[idx]}`);
+```
+
+결과
+```
+luckyNumber.toString():1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100
+Math.random(): 2
+luckyNumber: 21
+```
+
+## lotto
+
+WEB/studyhtml/WebContent/js/j07/j05.js
+```javascript
+'use strict';
+// 1~45 사이에 중복 되지 않게 6개의 숫자를 출력하시오.
+// 내가 한 방법
+let lotto = [];
+for(let i=0; i<6; i++){
+    lotto[i] = Math.floor(Math.random() * 44)+1;
+    for(let j=0; j<i; j++){
+        if(lotto[i] == lotto[j]){
+            i--;
+        }
+    }
+}
+console.log(`${lotto.toString()}`);
+
+// sort()
+lotto.sort(function(a,b){
+   return a-b; 
+});
+
+console.log(`after sort: ${lotto.toString()}`);
+
+// 다른 방법
+let lottoArr = [];
+
+for(let i = 1; i <= 45; i++){
+    lottoArr.push(i);
+}
+
+for(let i = 0; i <= 1000; i++){
+    let rand = Math.floor((Math.random() * 45));
+    let temp = 0;
+    temp = lottoArr[0];
+    lottoArr[0] = lottoArr[rand];
+    lottoArr[rand] = temp;
+}
+console.log(lottoArr);
+
+for(let i = 0; i < 6; i++){
+    console.log(`${i+1}번째 번호 : ${lottoArr.pop()}`);
+}
+```
+
+결과
+```
+28,13,4,42,9,1
+after sort: 1,4,9,13,28,42
+(45) [5, 28, 24, 31, 38, 39, 4, 41, 34, 11, 6, 37, 33, 19, 7, 13, 35, 25, 22, 16, 9, 21, 32, 36, 30, 1, 12, 45, 15, 44, 29, 42, 18, 27, 43, 23, 10, 14, 17, 26, 40, 20, 8, 2, 3]
+1번째 번호 : 3
+2번째 번호 : 2
+3번째 번호 : 8
+4번째 번호 : 20
+5번째 번호 : 40
+6번째 번호 : 26
+```
+
+# Date 객체
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+날짜와 시간에 대한 정보를 얻거나 설정 할 수 있다.
+
+JavaScript Date 객체는 시간의 한 점을 플랫폼에 종속되지 않는 형태로 나타냅니다. Date 객체는 1970년 1월 1일 UTC(협정 세계시) 자정과의 시간 차이를 밀리초로 나타내는 정수 값을 담습니다.
+
+```
+ex)
+(local 시간)
+  let date = new Date();
+  let date = new Date('년도/월/일');
+  let date = new Date('년도,월,일,시,분,초,밀리초');
+```
+
+WEB/studyhtml/WebContent/js/j07/j06.js
+```javascript
+'use strict';
+
+//let dateObj = new Date();
+let dateObj = new Date(2022,6,12,14,10,45);
+
+let dateInfo = {
+    year: dateObj.getFullYear(),            // 년도 4자리
+    month: dateObj.getMonth()+1,            // 월(0~11)이기 때문에 +1 필요
+    day: dateObj.getDate(),                 // 일(1~31)
+    week: dateObj.getDay(),                 // 0은 일요일 ~ 6은 토요일
+    hour: dateObj.getHours(),               // 시
+    minutes: dateObj.getMinutes(),          // 분
+    second: dateObj.getSeconds(),           // 초
+    miliseconds: dateObj.getMilliseconds()  // 1000분의 1초
+}
+
+for(let i in dateInfo){
+    console.log(`${i}: ${dateInfo[i]}`);
+}
+```
+
+결과
+```
+year: 2022
+month: 7
+day: 12
+week: 2
+hour: 14
+minutes: 10
+second: 45
+miliseconds: 0
+```
+
+# 이벤트
+
+마우스, 키이벤트, 폼이벤트, 로드, 기타 이벤트...
+
+
+## 마우스 이벤트 
+마우스 이벤트의 종류
+ 1. click 
+
+ - 사용자해 해당 element를 클릭했을 때(버튼을 눌렀다가 떼었을 때) 발생 합니다.
+
+ 2. mousedown 
+
+ - 사용자가 해당 element에서 마우스 버튼을 눌렀을 때 발생합니다.
+
+ 3. mouseup 
+
+ - 사용자가 해당 element에서 눌렀던 마우스 버튼을 떼었을 때 발생합니다.
+
+ 4. dblclick 
+
+ - 사용자가 해당 element에서 마우스 버튼을 더블 클릭했을 때 발생합니다.
+
+ 5. mousemove 
+
+ - 사용자가 해당 element에서 마우스를 움직였을 때 발생합니다.
+
+6. mouseover 
+
+ - 사용자가 마우스를 해당 element 바깥에서 안으로 옮겼을 때 발생합니다.
+
+ 7. mouseout 
+
+ - 사용자가 마우스를 해당 element 안에서 바깥으로 옮겼을 때 발생합니다.
+
+ 8. mouseenter 
+
+ - 사용자가 마우스를 해당 element 바깥에서 안으로 옮겼을 때 발생합니다.
+
+ - 버블링이 발생하지 않습니다.
+
+ 9. mouseleave 
+
+ - 사용자가 마우스를 해당 element 안에서 바깥으로 옮겼을 때 발생합니다.
+
+ - 버블링이 발생하지 않습니다.
+
+ 10. contextmenu 
+
+ - 마우스 오른쪽 버튼을 눌렀을 때 발생합니다.
+
+## 키이벤트
+key down : 키가 눌렸을 때 발생
+
+keyup : 키 누름이 해제될 때
+
+keypress : 키가 눌린 상태일 때 -- 더이상 사용되지 않습니다. 사용이 권장되지 않습니다.
+
+
+## 기타 이벤트
+
+|이벤트|설명|
+|---|:---:|
+|load|로딩이 완료 되었을 때 발생되는 이벤트|
+|scroll|스크롤바를 움직였을 때 발생되는 이벤트|
+|resize|사이즈가 변경 되었을 때|
+
+
+# 이벤트 연결 방식
+
+인라인, 기본, 표준
+
+## 인라인 이벤트 모델
+
+html 요소에 직접 이벤트를 연결하는 방식
+
+```
+ex)
+  <button onClick='doSave();'>저장</button>
+```
+
+WEB/studyhtml/WebContent/js/j07/h07.html
+```html
+  <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	function sum(num) {
+		alert(`num: ${num}`);
+	}
+</script>
+</head>
+<body>
+	<h2>인라인 이벤트 모델</h2>
+	<hr/>
+	<button onclick="javascript:sum(10);">클릭</button>
+</body>
+</html>
+```
+
+## 기본 이벤트 모델
+
+javascript에서 html요소를 취득한 후 이벤트를 객체의 메서드 형식으로 연결
+
+```
+ex)
+  let btn = document.getElementId('bt');  // 요소 취득
+  
+  btn.onclick = function(){
+    console.log('ok');
+  }
+```
+
+WEB/studyhtml/WebContent/js/j07/h08.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		
+		console.log(`window.onload`);
+		
+		let btn = document.getElementById('btn');
+		btn.onclick = function() {
+			alert('btn.onclick');
+		}
+	} 
+</script>
+</head>
+<body>
+	<h2>기본 이벤트 모델</h2>
+	<hr/>
+	<button id="btn">클릭</button>
+</body>
+</html>
+```
+
+WEB/studyhtml/WebContent/js/j07/h09.html
+기본 이벤트 모델로 다른 함수를 호출할 때는 함수에 ()를 붙이지 않는다.
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		
+		console.log(`window.onload`);
+		
+		let btn = document.getElementById('btn');
+		
+		function view(){
+			alert('btn.onclick');
+		}
+		// 기본 이벤트 모델로 다른 함수를 호출할 때는 함수에 ()를 붙이지 않는다.
+		btn.onclick = view;
+		// btn.onclick = view(); 이벤트 강제 수행
+	} 
+</script>
+</head>
+<body>
+	<h2>기본 이벤트 모델</h2>
+	<hr/>
+	<button id="btn">클릭</button>
+</body>
+</html>
+
+
+## 표준 이벤트 모델
+
+객체.addEventListner('이벤트','처리함수');
+
+WEB/studyhtml/WebContent/js/j07/h10.html
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>표준 이벤트 모델</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	// window에 html 엘리멘트가 로드 완료되면 발생!
+	window.onload = function(){
+		let btn = document.getElementById('btnSave');
+		
+		// 처리 함수
+		function view(){
+			alert('표준 이벤트 모델');
+		}
+		
+		// Event 감지
+		btn.addEventListener('click',view);
+	}
+</script>
+</head>
+<body>
+	<h2>표준 이벤트 모델</h2>
+	<hr/>
+	<input type="button" value="표준이벤트" id="btnSave" />
+	
+</body>
+
+</html>
+```
+
+## 이벤트 객체
+
+자바스크립트에서 기본적으로 제공해주는 객체
+
+마우스를 클릭했을 때 클릭한 좌표, 이벤트를 발생시킨 객체가 어떤 것인지 등 정보를 담고 있습니다.
+
+```
+btn.onclick = function(event){
+	event.프로퍼티
+	event.메서드
+}
+```
+
+|프로퍼티|설명|
+|---|:---:|
+|target|이벤트를 발생시킨 객체를 반환|										
+|type|이벤트의 이름을 반환|
+|clientX|이벤트가 발생한 x좌표(브라우저 기준)|							
+|clientY|이벤트가 발생한 y좌표(브라우저 기준)|						
+|screenX|이벤트가 발생한 x좌표(모니터 기준)|			
+|screenY|이벤트가 발생한 y좌표(모니터 기준)|				
+|button|마우스 왼쪽(0), 가운데(1),오른쪽(2)|
+
+WEB/studyhtml/WebContent/js/j07/h11.html
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+    div{
+        height: 100px;
+        background: #718c00;
+        margin-top: 20px;
+        color: #fff;
+    }
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		// 클릭 버튼 객체
+		let bt = document.getElementById('btn');
+		
+		bt.onclick = function(event){
+			  console.log(`event.target: ${event.target}`);	
+			  console.log(`event.type: ${event.type}`);
+			  
+			  console.log(`event.clientX: ${event.clientX}`);
+			  console.log(`event.clientY: ${event.clientY}`);
+			  
+			  console.log(`event.screenX: ${event.screenX}`);
+			  console.log(`event.screenY: ${event.screenY}`);
+		};
+		
+		// div 객체
+		let divArea = document.getElementById('area');
+		
+		divArea.onmousedown = function(event){
+			  console.log(`event.button: ${event.button}`);	
+		};
+	}   
+</script>
+</head>
+<body>
+	<h2>이벤트 객체</h2>
+	<hr/>
+	<button id="btn">클릭</button>
+	<div id="area">여기에 마우스 왼쪽, 가운데, 오른쪽 버튼 클릭!</div>
+</body>
+</html>
+```
