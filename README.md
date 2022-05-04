@@ -1580,3 +1580,202 @@ minutes: 10
 second: 45
 miliseconds: 0
 ```
+
+# 이벤트
+
+마우스, 키이벤트, 폼이벤트, 로드, 기타 이벤트...
+
+
+## 마우스 이벤트 
+마우스 이벤트의 종류
+ 1. click 
+
+ - 사용자해 해당 element를 클릭했을 때(버튼을 눌렀다가 떼었을 때) 발생 합니다.
+
+ 2. mousedown 
+
+ - 사용자가 해당 element에서 마우스 버튼을 눌렀을 때 발생합니다.
+
+ 3. mouseup 
+
+ - 사용자가 해당 element에서 눌렀던 마우스 버튼을 떼었을 때 발생합니다.
+
+ 4. dblclick 
+
+ - 사용자가 해당 element에서 마우스 버튼을 더블 클릭했을 때 발생합니다.
+
+ 5. mousemove 
+
+ - 사용자가 해당 element에서 마우스를 움직였을 때 발생합니다.
+
+6. mouseover 
+
+ - 사용자가 마우스를 해당 element 바깥에서 안으로 옮겼을 때 발생합니다.
+
+ 7. mouseout 
+
+ - 사용자가 마우스를 해당 element 안에서 바깥으로 옮겼을 때 발생합니다.
+
+ 8. mouseenter 
+
+ - 사용자가 마우스를 해당 element 바깥에서 안으로 옮겼을 때 발생합니다.
+
+ - 버블링이 발생하지 않습니다.
+
+ 9. mouseleave 
+
+ - 사용자가 마우스를 해당 element 안에서 바깥으로 옮겼을 때 발생합니다.
+
+ - 버블링이 발생하지 않습니다.
+
+ 10. contextmenu 
+
+ - 마우스 오른쪽 버튼을 눌렀을 때 발생합니다.
+
+## 키이벤트
+key down : 키가 눌렸을 때 발생
+
+keyup : 키 누름이 해제될 때
+
+keypress : 키가 눌린 상태일 때 -- 더이상 사용되지 않습니다. 사용이 권장되지 않습니다.
+
+
+## 기타 이벤트
+
+|이벤트|설명|
+|---|:---:|
+|load|로딩이 완료 되었을 때 발생되는 이벤트|
+|scroll|스크롤바를 움직였을 때 발생되는 이벤트|
+|resize|사이즈가 변경 되었을 때|
+
+
+# 이벤트 연결 방식
+
+인라인, 기본, 표준
+
+## 인라인 이벤트 모델
+
+html 요소에 직접 이벤트를 연결하는 방식
+
+```
+ex)
+  <button onClick='doSave();'>저장</button>
+```
+
+WEB/studyhtml/WebContent/js/j07/h07.html
+```html
+  <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	function sum(num) {
+		alert(`num: ${num}`);
+	}
+</script>
+</head>
+<body>
+	<h2>인라인 이벤트 모델</h2>
+	<hr/>
+	<button onclick="javascript:sum(10);">클릭</button>
+</body>
+</html>
+```
+
+## 기본 이벤트 모델
+
+javascript에서 html요소를 취득한 후 이벤트를 객체의 메서드 형식으로 연결
+
+```
+ex)
+  let btn = document.getElementId('bt');  // 요소 취득
+  
+  btn.onclick = function(){
+    console.log('ok');
+  }
+```
+
+WEB/studyhtml/WebContent/js/j07/h08.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		
+		console.log(`window.onload`);
+		
+		let btn = document.getElementById('btn');
+		btn.onclick = function() {
+			alert('btn.onclick');
+		}
+	} 
+</script>
+</head>
+<body>
+	<h2>기본 이벤트 모델</h2>
+	<hr/>
+	<button id="btn">클릭</button>
+</body>
+</html>
+```
+기본 이벤트 모델로 다른 함수를 호출할 때는 함수에 ()를 붙이지 않는다.
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		
+		console.log(`window.onload`);
+		
+		let btn = document.getElementById('btn');
+		
+		function view(){
+			alert('btn.onclick');
+		}
+		// 기본 이벤트 모델로 다른 함수를 호출할 때는 함수에 ()를 붙이지 않는다.
+		btn.onclick = view;
+		// btn.onclick = view(); 이벤트 강제 수행
+	} 
+</script>
+</head>
+<body>
+	<h2>기본 이벤트 모델</h2>
+	<hr/>
+	<button id="btn">클릭</button>
+</body>
+</html>
