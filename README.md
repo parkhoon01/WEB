@@ -1781,3 +1781,129 @@ WEB/studyhtml/WebContent/js/j07/h09.html
 	<button id="btn">클릭</button>
 </body>
 </html>
+
+
+## 표준 이벤트 모델
+
+객체.addEventListner('이벤트','처리함수');
+
+WEB/studyhtml/WebContent/js/j07/h10.html
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>표준 이벤트 모델</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	// window에 html 엘리멘트가 로드 완료되면 발생!
+	window.onload = function(){
+		let btn = document.getElementById('btnSave');
+		
+		// 처리 함수
+		function view(){
+			alert('표준 이벤트 모델');
+		}
+		
+		// Event 감지
+		btn.addEventListener('click',view);
+	}
+</script>
+</head>
+<body>
+	<h2>표준 이벤트 모델</h2>
+	<hr/>
+	<input type="button" value="표준이벤트" id="btnSave" />
+	
+</body>
+
+</html>
+```
+
+## 이벤트 객체
+
+자바스크립트에서 기본적으로 제공해주는 객체
+
+마우스를 클릭했을 때 클릭한 좌표, 이벤트를 발생시킨 객체가 어떤 것인지 등 정보를 담고 있습니다.
+
+```
+btn.onclick = function(event){
+	event.프로퍼티
+	event.메서드
+}
+```
+
+|프로퍼티|설명|
+|---|:---:|
+|target|이벤트를 발생시킨 객체를 반환|										
+|type|이벤트의 이름을 반환|
+|clientX|이벤트가 발생한 x좌표(브라우저 기준)|							
+|clientY|이벤트가 발생한 y좌표(브라우저 기준)|						
+|screenX|이벤트가 발생한 x좌표(모니터 기준)|			
+|screenY|이벤트가 발생한 y좌표(모니터 기준)|				
+|button|마우스 왼쪽(0), 가운데(1),오른쪽(2)|
+
+WEB/studyhtml/WebContent/js/j07/h11.html
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+    div{
+        height: 100px;
+        background: #718c00;
+        margin-top: 20px;
+        color: #fff;
+    }
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		// 클릭 버튼 객체
+		let bt = document.getElementById('btn');
+		
+		bt.onclick = function(event){
+			  console.log(`event.target: ${event.target}`);	
+			  console.log(`event.type: ${event.type}`);
+			  
+			  console.log(`event.clientX: ${event.clientX}`);
+			  console.log(`event.clientY: ${event.clientY}`);
+			  
+			  console.log(`event.screenX: ${event.screenX}`);
+			  console.log(`event.screenY: ${event.screenY}`);
+		};
+		
+		// div 객체
+		let divArea = document.getElementById('area');
+		
+		divArea.onmousedown = function(event){
+			  console.log(`event.button: ${event.button}`);	
+		};
+	}   
+</script>
+</head>
+<body>
+	<h2>이벤트 객체</h2>
+	<hr/>
+	<button id="btn">클릭</button>
+	<div id="area">여기에 마우스 왼쪽, 가운데, 오른쪽 버튼 클릭!</div>
+</body>
+</html>
+```
