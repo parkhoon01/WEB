@@ -754,7 +754,7 @@ subject02.credit: 5
 subject02.printOut(): css, 5
 ```
 
-j06/j01.js
+WEB/studyhtml/WebContent/js/j06/j01.js
 
 ```javascript
 'use strict';
@@ -815,7 +815,7 @@ triangle02.area(): 100
 
 prototype을 이용하면 객체의 메서드를 생성자 함수 내에 정의 하지 않고도 생성된 객체에서 호출 가능.
 
-j06/j02.js
+WEB/studyhtml/WebContent/js/j06/j02.js
 ```javascript
 'use strict';
 
@@ -859,7 +859,7 @@ for(let 변수 in 객체명){
 }
 ```
 
-j06/j03
+WEB/studyhtml/WebContent/js/j06/j03
 ```javascript
 'use strict';
 
@@ -907,7 +907,7 @@ let 변수01 = new 클래스명(매개변수01, 매개변수02,...);
 let 변수02 = new 클래스명(매개변수01, 매개변수02,...);
 ```
 
-j06/j04.js
+WEB/studyhtml/WebContent/js/j06/j04.js
 ```javascript
 'use strict';
 
@@ -940,7 +940,7 @@ name: PCWK, age: 23 speak!
 
 ## User class생성, get, set 사용
 
-j06/j05.js
+WEB/studyhtml/WebContent/js/j06/j05.js
 ```javascript
 'use strict';
 
@@ -999,7 +999,7 @@ age: 0
 - 객체의 인자로 넘길 수 있어야 한다.
 - 객체의 리턴값으로 리턴 할수 있어야 한다.
 
-j06/j06.js
+WEB/studyhtml/WebContent/js/j06/j06.js
 ```javascript
 'use strict';
 
@@ -1040,7 +1040,7 @@ class child extends parents{
 
 <img src="https://user-images.githubusercontent.com/104181668/166396221-fe0aeebb-4f8c-453c-9bc2-a2a70970915e.png"></img>
 
-j06/j07.js
+WEB/studyhtml/WebContent/js/j06/j07.js
 ```javascript
 'use strict';
 
@@ -1135,7 +1135,7 @@ let num = 13;
 |toFixed()|toFixed(n)일때 n값 만큼의 소수점 자릿수를 만들어준다.<br>(자릿수 이전 값은 반올림)|
 |toString()|toString(n)일때 n값의 진수로 만들어 줍니다.|
 
-j06/j08.js
+WEB/studyhtml/WebContent/js/j06/j08.js
 ```javascript
 'use strict';
 
@@ -1177,7 +1177,7 @@ let str = new String('자바스크립트');
 let str = '자바스크립트';
 ```
 
-j06/j09.js
+WEB/studyhtml/WebContent/js/j06/j09.js
 ```javascript
 'use strict';
 
@@ -1271,7 +1271,7 @@ ex)
   length : 배열의 길이 return
 ```
 
-j07/j01.js
+WEB/studyhtml/WebContent/js/j07/j01.js
 ```javascript
 'use strict';
 
@@ -1340,7 +1340,7 @@ for ... in
   배열의 인덱스를 반환
 ```
 
-j07/j02.js
+WEB/studyhtml/WebContent/js/j07/j02.js
 ```javascript
 'use strict';
 
@@ -1374,7 +1374,7 @@ j02.js:11 i: 아이슬란드
 
 배열의 요소에 순차적으로 접근하여 필요한 값을 만들때 사용하는 메서드
 
-j07/j03.js
+WEB/studyhtml/WebContent/js/j07/j03.js
 ```javascript
 'use strict';
 
@@ -1443,7 +1443,7 @@ Math.프로퍼티
 Math.메서드
 ```
 
-j07/j04.js
+WEB/studyhtml/WebContent/js/j07/j04.js
 ```javascript
 'use strict';
 
@@ -1473,7 +1473,7 @@ luckyNumber: 21
 
 ## lotto
 
-j07/j05.js
+WEB/studyhtml/WebContent/js/j07/j05.js
 ```javascript
 'use strict';
 // 1~45 사이에 중복 되지 않게 6개의 숫자를 출력하시오.
@@ -1546,7 +1546,7 @@ ex)
   let date = new Date('년도,월,일,시,분,초,밀리초');
 ```
 
-j07/j06.js
+WEB/studyhtml/WebContent/js/j07/j06.js
 ```javascript
 'use strict';
 
