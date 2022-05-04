@@ -1472,6 +1472,8 @@ luckyNumber: 21
 ```
 
 ## lotto
+
+j07/j05.js
 ```javascript
 'use strict';
 // 1~45 사이에 중복 되지 않게 6개의 숫자를 출력하시오.
@@ -1526,4 +1528,55 @@ after sort: 1,4,9,13,28,42
 4번째 번호 : 20
 5번째 번호 : 40
 6번째 번호 : 26
+```
+
+# Date 객체
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+날짜와 시간에 대한 정보를 얻거나 설정 할 수 있다.
+
+JavaScript Date 객체는 시간의 한 점을 플랫폼에 종속되지 않는 형태로 나타냅니다. Date 객체는 1970년 1월 1일 UTC(협정 세계시) 자정과의 시간 차이를 밀리초로 나타내는 정수 값을 담습니다.
+
+```
+ex)
+(local 시간)
+  let date = new Date();
+  let date = new Date('년도/월/일');
+  let date = new Date('년도,월,일,시,분,초,밀리초');
+```
+
+j07/j06.js
+```javascript
+'use strict';
+
+//let dateObj = new Date();
+let dateObj = new Date(2022,6,12,14,10,45);
+
+let dateInfo = {
+    year: dateObj.getFullYear(),            // 년도 4자리
+    month: dateObj.getMonth()+1,            // 월(0~11)이기 때문에 +1 필요
+    day: dateObj.getDate(),                 // 일(1~31)
+    week: dateObj.getDay(),                 // 0은 일요일 ~ 6은 토요일
+    hour: dateObj.getHours(),               // 시
+    minutes: dateObj.getMinutes(),          // 분
+    second: dateObj.getSeconds(),           // 초
+    miliseconds: dateObj.getMilliseconds()  // 1000분의 1초
+}
+
+for(let i in dateInfo){
+    console.log(`${i}: ${dateInfo[i]}`);
+}
+```
+
+결과
+```
+year: 2022
+month: 7
+day: 12
+week: 2
+hour: 14
+minutes: 10
+second: 45
+miliseconds: 0
 ```
