@@ -1342,10 +1342,188 @@ for ... in
 
 j07/j02.js
 ```javascript
+'use strict';
 
+let city = ['미국','영국','일본','필리핀','아이슬란드'];
+
+for(let i in city){
+    console.log(`i: ${i}, city[${i}]:${city[i]}`);
+}
+
+// for ... of문
+for(let i of city){
+    console.log(`i: ${i}`);
+}
 ```
 
 결과
 ```
+i: 0, city[0]:미국
+j02.js:6 i: 1, city[1]:영국
+j02.js:6 i: 2, city[2]:일본
+j02.js:6 i: 3, city[3]:필리핀
+j02.js:6 i: 4, city[4]:아이슬란드
+j02.js:11 i: 미국
+j02.js:11 i: 영국
+j02.js:11 i: 일본
+j02.js:11 i: 필리핀
+j02.js:11 i: 아이슬란드
+```
 
+## forEach()
+
+배열의 요소에 순차적으로 접근하여 필요한 값을 만들때 사용하는 메서드
+
+j07/j03.js
+```javascript
+'use strict';
+
+let numArray = [1,2,3,4,5,6,7];
+let sum = 0;
+
+numArray.forEach(function(value,index,array){
+//    console.log(`value: ${value}`);
+//    console.log(`index: ${index}`);
+//    console.log(`index: ${index},${array}`);
+    sum += value;
+});
+
+console.log(`sum=${sum}`);
+
+// map() : 기존 배열을 이용해 새로운 배열을 생성
+
+let base = [1,2,3];
+
+let newArray = base.map(function(value,index,array){
+    console.log(`value: ${value}, index: ${index}, array: ${array}`);
+    return value*2;
+});
+
+console.log(`newArray: ${newArray.toString()}`);
+
+// filter() : 조건에 맞는 배열의 요소들만 걸러 새로운 배열 생성
+
+let data = ['JAVASCRIPT',20,30,'JQUERY'];
+
+let numArray02 = data.filter(function(value,index,array){
+   console.log(`value: ${value}, index: ${index}, array: ${array}`); 
+   console.log(`type: ${typeof value}`);
+   return typeof value == 'number';
+});
+
+console.log(`${numArray02.toString()}`);
+```
+
+결과
+```
+sum=28
+value: 1, index: 0, array: 1,2,3
+value: 2, index: 1, array: 1,2,3
+value: 3, index: 2, array: 1,2,3
+newArray: 2,4,6
+value: JAVASCRIPT, index: 0, array: JAVASCRIPT,20,30,JQUERY
+type: string
+value: 20, index: 1, array: JAVASCRIPT,20,30,JQUERY
+type: number
+value: 30, index: 2, array: JAVASCRIPT,20,30,JQUERY
+type: number
+value: JQUERY, index: 3, array: JAVASCRIPT,20,30,JQUERY
+type: string
+20,30
+```
+
+# Math
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+Math는 수학적인 상수와 함수를 위한 속성과 메서드를 가진 내장 객체입니다. 함수 객체가 아닙니다.
+
+```
+Math.프로퍼티
+Math.메서드
+```
+
+j07/j04.js
+```javascript
+'use strict';
+
+// 1~100 배열 설정, 이중에 행운의 숫자 1개 출력
+
+let luckyNumber = [];
+for(let i=1; i<=100; i++){
+    luckyNumber.push(i);
+}
+
+console.log(`luckyNumber.toString():${luckyNumber.toString()}`);
+
+//Math.random() 함수는 0 이상 1 미만의 구간에서 근사적으로 균일한(approximately uniform) 부동소숫점 의사난수를 반환하며, 이 값은 사용자가 원하는 범위로 변형할 수 있다.
+// 난수 생성 알고리즘에 사용되는 초기값은 구현체가 선택하며, 사용자가 선택하거나 초기화할 수 없다.
+
+console.log(`Math.random(): ${Math.floor(Math.random() * luckyNumber.length)}`);
+let idx = Math.floor(Math.random() * luckyNumber.length);
+console.log(`luckyNumber: ${luckyNumber[idx]}`);
+```
+
+결과
+```
+luckyNumber.toString():1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100
+Math.random(): 2
+luckyNumber: 21
+```
+
+## lotto
+```javascript
+'use strict';
+// 1~45 사이에 중복 되지 않게 6개의 숫자를 출력하시오.
+// 내가 한 방법
+let lotto = [];
+for(let i=0; i<6; i++){
+    lotto[i] = Math.floor(Math.random() * 44)+1;
+    for(let j=0; j<i; j++){
+        if(lotto[i] == lotto[j]){
+            i--;
+        }
+    }
+}
+console.log(`${lotto.toString()}`);
+
+// sort()
+lotto.sort(function(a,b){
+   return a-b; 
+});
+
+console.log(`after sort: ${lotto.toString()}`);
+
+// 다른 방법
+let lottoArr = [];
+
+for(let i = 1; i <= 45; i++){
+    lottoArr.push(i);
+}
+
+for(let i = 0; i <= 1000; i++){
+    let rand = Math.floor((Math.random() * 45));
+    let temp = 0;
+    temp = lottoArr[0];
+    lottoArr[0] = lottoArr[rand];
+    lottoArr[rand] = temp;
+}
+console.log(lottoArr);
+
+for(let i = 0; i < 6; i++){
+    console.log(`${i+1}번째 번호 : ${lottoArr.pop()}`);
+}
+```
+
+결과
+```
+28,13,4,42,9,1
+after sort: 1,4,9,13,28,42
+(45) [5, 28, 24, 31, 38, 39, 4, 41, 34, 11, 6, 37, 33, 19, 7, 13, 35, 25, 22, 16, 9, 21, 32, 36, 30, 1, 12, 45, 15, 44, 29, 42, 18, 27, 43, 23, 10, 14, 17, 26, 40, 20, 8, 2, 3]
+1번째 번호 : 3
+2번째 번호 : 2
+3번째 번호 : 8
+4번째 번호 : 20
+5번째 번호 : 40
+6번째 번호 : 26
 ```
