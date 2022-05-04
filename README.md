@@ -1740,6 +1740,8 @@ WEB/studyhtml/WebContent/js/j07/h08.html
 </body>
 </html>
 ```
+
+WEB/studyhtml/WebContent/js/j07/h09.html
 기본 이벤트 모델로 다른 함수를 호출할 때는 함수에 ()를 붙이지 않는다.
 
 ```html
