@@ -2077,3 +2077,59 @@ WEB/studyhtml/WebContent/js/j08/h03.html
 BOM은 브라우저와 컴퓨터 스크린에 접근 할 수 있는 객체의 모음.
 
 window 객체를 통해 접근
+
+	
+## window 객체 모델
+	
+window BOM의 최상위 객체로, 각 프레임별로 하나씩 존재
+	
+![3](https://user-images.githubusercontent.com/104181668/167051235-2d3c7dd7-5bbe-4c20-a11f-6928346d9df2.png)
+
+navigator 브라우저명과 버전정보를 속성으로 가짐
+
+document 현재 문서에 대한 정보
+	
+location 현재 url에 대한 정보
+	
+history 현재 브라우저가 접근했던 url history
+
+screen 브라우저 외부 환경에 대한 정보
+	
+javascript 분류
+|메서드|설명|
+|---|:---:|
+|자바스크립트 Core문법|자료형,조건,반복문 등...|
+|Core라이브러리|내장함수,Number,String,Date,Math등|
+|BOM|브라우저와 관련된 window,navigator,location,history,documnet,screen객체|
+|DOM(Docunment Object Model)|노드,스타일, 속성, 이벤트 등을 다룰 수 있는 다양한 기능 포함|
+	
+# window 객체
+
+웹 브라우저에 대한 전반적인 정보 취득이나 제어 등에 관련된 객체
+	
+## open()
+	
+open() 메서드는 새로운 윈도우를 만들어 주는 메서드
+
+```
+window.open('문서주소','윈도우 이름','옵션=값, 옵션=값, 옵션=값, 옵션=값');
+ex)
+window.open('wondowopen.html','window팝업','width=400, height=600, menubar=no, status=no, toolbar=no');
+```
+
+```
+width : 팝업창 가로길이											
+height : 팝업창 세로길이											
+toolbar=no : 단축도구창(툴바) 표시안함									
+menubar=no : 메뉴창(메뉴바) 표시안함									
+location=no : 주소창 표시안함									
+scrollbars=no : 스크롤바 표시안함									
+status=no : 아래 상태바창 표시안함									
+resizable=no : 창변형 하지않음									
+fullscreen=no : 전체화면 하지않음									
+channelmode=yes : F11 키 기능이랑 같음									
+left=0 : 왼쪽에 창을 고정(ex. left=30 이런식으로 조절)							
+top=0 : 위쪽에 창을 고정(ex. top=100 이런식으로 조절)		
+```
+
+	
