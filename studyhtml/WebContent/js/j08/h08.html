@@ -1,0 +1,39 @@
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	let w = window.screen.width;
+	let h = window.screen.height;
+	let centerW = w/2 - (600/2);
+	let centerH = h/2 - (400/2);
+	
+	console.log(`screen.width: ${w}, screen.height: ${h}`);
+	console.log(`screen.centerW: ${centerH}, screen.centerH: ${centerH}`);
+	
+	// h03, 600*400으로 center에 오게 팝업을 띄우세요.
+	window.onload = function(){
+		   let btn = document.getElementById('btn');
+		   btn.onclick = function(){
+			   window.open('/studyhtml/js/j08/h03.html','pcwk','width=600, height=400, left='+ centerW +', top='+ centerH);
+		   };
+	};
+</script>
+</head>
+<body>
+	<h2></h2>
+	<hr/>
+	
+	<button id="btn">center 팝업</button>
+</body>
+</html>
