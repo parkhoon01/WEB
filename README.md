@@ -2326,3 +2326,5 @@ screen 객체는 모니터 화면정보 관련 객체
 
 (ex) POPUP 화면을 정중앙에 오게 할때 사용)
   
+![5](https://user-images.githubusercontent.com/104181668/167059309-5daeb4d5-1912-49d7-930a-ec83a434bfa8.png)
+
