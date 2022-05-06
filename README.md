@@ -2135,7 +2135,9 @@ top=0 : 위쪽에 창을 고정(ex. top=100 이런식으로 조절)
 ```
 
 ![4](https://user-images.githubusercontent.com/104181668/167052880-df049c6d-b5a7-4e6b-8491-9aecd2e78f62.png)
-  
+
+WEB/studyhtml/WebContent/js/j08/h04.html
+
 ```html
  <!--Html comment-->
 <!DOCTYPE html>
@@ -2181,3 +2183,85 @@ setInterval(function(){
     실행문
 },밀리초);
 ```
+  
+WEB/studyhtml/WebContent/js/j08/h05.html
+  
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+let i=0;
+window.setInterval(function(){
+	  i++;
+	  alert('2초마다 실행.'+i);
+},2000);
+</script>
+</head>
+<body>
+	<h2>setInterval()</h2>
+	<hr/>
+	
+</body>
+</html>  
+```
+
+## clearInterval()
+  
+setInterval()을 중지시키는 메서드
+  
+clearInterval()을 사용하려면 setInterval()을 변수로 받아야 한다.
+  
+WEB/studyhtml/WebContent/js/j08/h06.html
+  
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>clearInterval()</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		let bt = document.getElementById('bt');
+		
+		let i = 0;
+		let increase = setInterval(function(){
+			i++;
+			alert('2초마다 수행:' +i);
+		},2000);
+		
+		bt.onclick = function(){
+			  window.clearInterval(increase);	
+		};
+	};
+</script>
+</head>
+<body>
+	<h2></h2>clearInterval()
+	<hr/>
+	
+	<button id="bt">stop</button>
+</body>
+</html>
+```
+  
