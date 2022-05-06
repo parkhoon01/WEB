@@ -2170,3 +2170,14 @@ top=0 : 위쪽에 창을 고정(ex. top=100 이런식으로 조절)
 </body>
 </html>
 ```
+	
+# setInterval()
+
+setInterval()은 일정 시간마다 지정한 함수를 반복적으로 실행.
+	
+```
+형식
+setInterval(function(){
+    실행문
+},밀리초);
+```
