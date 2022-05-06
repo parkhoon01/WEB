@@ -2430,8 +2430,95 @@ WEB/studyhtml/WebContent/js/j08/h09.html
 |platform|플랫폼 명|
 |userAgent|브라우저의 코드명과 버전을 반환|
 	
+브라우저 정보
+	
+|브라우저|정보|
+|---|:---:|
+|IE|Mozilla/5.0 (Windows NT 10.0; WOW64; `Trident`/7.0; rv:11.0) like Gecko|
+|Edge|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/94.0.4606.81 Safari/537.36 `Edg`/94.0.992.50|
+|Chrome|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) `Chrome`/94.0.4606.81 Safari/537.36|
+|FireFox|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 `Firefox`/43.0|
+
+	
 WEB/studyhtml/WebContent/js/j08/h10.html
 
+```html
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	let brower = window.navigator.userAgent;
+//     console.log(`userAgent: ${brower}`);
+    
+    // 브라우저 정보 추출
+    function getBrowerInfo(){
+    	let agent = window.navigator.userAgent.toUpperCase();
+    	console.log('agent: ' + agent);
+    	
+    	if(agent.lastIndexOf('EDG') >= 0){
+    		return 'EDG';
+    	}
+    	else if(agent.indexOf('CHROME') >= 0){
+    		return 'CHROME';
+    	}
+    	else if(agent.indexOf('TRIDENT') >= 0){
+    		return 'IE';
+    	
+    	}
+    	else if(agent.indexOf('FIREFOX') >= 0){
+            return 'FIREFOX';
+    	}
+    	else{
+    		return '';
+    	}
+    };
+    
+    window.onload = function(){
+        let btn = document.getElementById('btn');	
+        btn.onclick = function(){
+//             console.log('btn.onclick');	
+            alert(getBrowerInfo());
+        };
+    };
+</script>
+</head>
+<body>
+	<h2>navigator</h2>
+	<hr/>
+	<button id="btn">브라우저</button>
+</body>
+</html>
+```
+
+## DOM(Document Object Model)
+
+문서 객체 모델이라 하며, document자체
+
+html요소의 선택, 생성, 수정, 삭제를 위해 사용
+	
+![6](https://user-images.githubusercontent.com/104181668/167073520-f1016688-8e0b-43a2-9539-a251fb37d5db.png)
+
+
+## 요소의 선택
+|요소를 직접 선택||
+|메서드|설명|
+|---|:---:|
+|getElementById()|html요소의 id속성으로 요소를 선택 ex)|
+|getElementByClassName()|html 요소의 class 속성으로 요소를 선택|
+|getElementByTagName()|html 요소의 태그명으로 요소를 선택|
+|getElementByName()|html 요소의 속성중 name인 요소로 선택|
+|querySelector()|선택된 요소중 첫 번째 요소만 선택|
+|querySelectorAll()|선택한 요소의 전체를 선택|
+	
 ```html
 
 ```
