@@ -1907,3 +1907,122 @@ WEB/studyhtml/WebContent/js/j07/h11.html
 </body>
 </html>
 ```
+
+## 이벤트 객체 주요 메서드
+
+|메서드|설명|
+|---|:---:|
+|preventDefault()|기본 이벤트의 실행을 막아준다.|
+|stopPropagation()|이벤트 버블링을 방지한다.|
+
+## preventDefault()
+
+기본 이벤트는 html요소중 자바스크립트가 아닌 html요소 자체가 가지고 있는 이벤트
+```
+ex) form submit, a href 
+```
+
+WEB/studyhtml/WebContent/js/j08/h01.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>preventDefault()</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		// a 객체
+		let pcwk = document.getElementById('pcwk');
+		
+		pcwk.onclick = function(event){
+			  alert('PCWK');	
+			  //html요소 자체가 가지고 있는 이벤트를 막기
+// 			  event.preventDefault();
+			  
+			  return false;
+		};
+	};
+</script>
+</head>
+<body>
+	<h2>preventDefault()</h2>
+	<h5>기본 이벤트는 html요소중 자바스크립트가 아닌 html요소 자체가 가지고 있는 이벤트를 막기</h5>
+	<hr/>
+	
+	<div>
+	   <a href="http://cafe.daum.net/pcwk" id="pcwk">PCWK</a>
+	</div>
+</body>
+</html>
+```
+
+## stopPropagation(), 이벤트 버블링
+
+이벤트 버블링은 부모요소와 자식요소 모두에 이벤트가 연결되어 있을 경우 자식 요소의 이벤트를 실행 했을 때 부모 요소의 이벤트도 같이 실행되는 경우이다.
+
+![image](https://user-images.githubusercontent.com/104181668/167048624-ef8510c5-ac3d-4904-8125-40c82c4e6260.png)
+
+1. <input>에 할당된 onclick 핸들러 작동.
+2. 바깥에 div에 할당된 핸들러 작동.
+3. div 바깥의 <form>에 할당된 핸들러 작동.
+4. document 객체를 만날 때까지 각 요소의 할당된 핸들러가 동작.
+
+WEB/studyhtml/WebContent/js/j08/h02.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+    form,div,input{
+        margin: 12px;
+        border: 1px solid red;
+    }
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<h2>버블링</h2>
+	<p>이벤트 버블링은 부모요소와 자식요소 모두에 이벤트가 연결되어 있을 경우 자식 요소의 이벤트를 실행 했을 때 부모 요소의 이벤트도 같이 실행되는 경우이다.</p>
+	<hr/>
+	
+	<form action="#" onclick="alert('form');">
+	   <div onclick="event.stopPropagation();">
+            <input type="submit" onclick="alert('submit')" value='클릭' />	   
+	   </div>
+	</form>
+</body>
+</html>
+```
+
+## 캡처링
+	
+이벤트에는 버블링 외에도 캡처링이라는 흐름이 존재한다. 실제 코드에서는 자주 쓰이지 않는다.
+	
+DOM 이벤트에서 정의한 이벤트 흐름 3가지 단계
+1. 캡처링 단계 - 이벤트가 하위 요소로 전파
+2. 타겟 단계 - 이벤트가 타겟 요소에 전달되는 단계
+3. 버블링 단계 - 이벤트가 하위요소로 전파되는 단계!
+
+![2](https://user-images.githubusercontent.com/104181668/167049026-5c3a9870-0ca4-4c74-b6a7-6e3adbd350a3.png)
+
+<td>를 클릭하면 이벤트가 최상위 조상에서 시작해 아래로 전파(캡처링)-> 이벤트가 타겟 요소에 도착해 실행된 후(타겟 단계) -> 다시 위로 전파(버블링 단계)
+
