@@ -2265,3 +2265,64 @@ WEB/studyhtml/WebContent/js/j08/h06.html
 </html>
 ```
   
+## location객체
+
+location객체는 웹브라우저의 주소 url관련 객체
+  
+|프로퍼티|설명|
+|---|:---:|
+|host|주소의 호스트명과 포트번호를 교환|
+|port|주소의 포트번호를 교환|
+|pathname|주소의 path명을 반환|
+|href|주소값을 반환|
+|protocol|주소의 프로토콜명을 반환 ex) http|
+|hash|주소의 앵커명(#) ex) #pcwk|
+
+  
+|메서드|설명|
+|---|:---:|
+|reload()|현재 페이지를 다시 로드|
+|replace()|replace(url) 일때 해당 url로 이동한다.|
+  
+WEB/studyhtml/WebContent/js/j08/h07.html
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		console.log(`location.host: ${location.host}`);
+		console.log(`window.location.port: ${window.location.port}`);
+		console.log(`window.location.protocol: ${window.location.protocol}`);
+		console.log(`window.location.pathname: ${window.location.pathname}`);
+	};
+</script>
+</head>
+<body>
+	<h2>location</h2>
+	<hr/>
+	<button onclick="javasctipt:location.reload();">reload</button>
+	<button onclick="location.replace('https://github.com/');">replace</button>
+    
+</body>
+</html>
+```
+  
+## screen 객체
+  
+screen 객체는 모니터 화면정보 관련 객체
+
+(ex) POPUP 화면을 정중앙에 오게 할때 사용)
+  
