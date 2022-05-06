@@ -2108,6 +2108,8 @@ javascript 분류
 웹 브라우저에 대한 전반적인 정보 취득이나 제어 등에 관련된 객체
 	
 ## open()
+  
+https://developer.mozilla.org/ko/docs/Web/API/Window/open
 	
 open() 메서드는 새로운 윈도우를 만들어 주는 메서드
 
@@ -2132,4 +2134,38 @@ left=0 : 왼쪽에 창을 고정(ex. left=30 이런식으로 조절)
 top=0 : 위쪽에 창을 고정(ex. top=100 이런식으로 조절)		
 ```
 
-	
+![4](https://user-images.githubusercontent.com/104181668/167052880-df049c6d-b5a7-4e6b-8491-9aecd2e78f62.png)
+  
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		let bt = document.getElementById('bt');
+		bt.onclick = function name(){
+// 			  window.open('http://cafe.daum.net/pcwk','pcwk','width=600, height=400, left=100, top=10');	
+// 			  window.open('/studyhtml/js/j08/h03.html','pcwk','width=600, height=400, left=100, top=10');	
+			  window.open('/studyhtml/js/j08/h03.html','pcwk','toolbar=yes, width=600, height=400, left=100, top=10');	
+		}; 
+	};
+</script>
+</head>
+<body>
+	<h2>open() 메서드는 새로운 윈도우를 만들어 주는 메서드</h2>
+	<hr/>
+	<button id="bt">새창 열기</button>
+</body>
+</html>
+```
