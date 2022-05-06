@@ -2327,4 +2327,111 @@ screen 객체는 모니터 화면정보 관련 객체
 (ex) POPUP 화면을 정중앙에 오게 할때 사용)
   
 ![5](https://user-images.githubusercontent.com/104181668/167059309-5daeb4d5-1912-49d7-930a-ec83a434bfa8.png)
+	
+|프로퍼티|설명|
+|---|:---:|
+|width|화면의 넓이|
+|height|화면의 높이|
 
+WEB/studyhtml/WebContent/js/j08/h08.html
+
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	let w = window.screen.width;
+	let h = window.screen.height;
+	let centerW = w/2 - (600/2);
+	let centerH = h/2 - (400/2);
+	
+	console.log(`screen.width: ${w}, screen.height: ${h}`);
+	console.log(`screen.centerW: ${centerH}, screen.centerH: ${centerH}`);
+	
+	// h03, 600*400으로 center에 오게 팝업을 띄우세요.
+	window.onload = function(){
+		   let btn = document.getElementById('btn');
+		   btn.onclick = function(){
+			   window.open('/studyhtml/js/j08/h03.html','pcwk','width=600, height=400, left='+ centerW +', top='+ centerH);
+		   };
+	};
+</script>
+</head>
+<body>
+	<h2></h2>
+	<hr/>
+	
+	<button id="btn">center 팝업</button>
+</body>
+</html>
+```
+
+## history 객체
+	
+페이지가 이동한 정보를 관리하는 객체
+
+|메서드|설명|
+|---|:---:|
+|back()|이전 페이지로 이동|
+|forward()|이후 페이지로 이동|
+|go()|go(n)일때 n값에 따라 양수이면 이후페이지, 음수이면 이전페이지 이동|
+
+WEB/studyhtml/WebContent/js/j08/h09.html
+	
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<h2>history() 객체</h2>
+	<hr/>
+	<button onclick="history.back();">back</button>
+	<button onclick="history.forward();">forward</button>
+	<button onclick="history.go(2);">go(2)</button>
+	<button onclick="history.go(-2);">go(-2)</button>
+</body>
+</html>
+```
+	
+## navigator객체
+	
+브라우저 버전이나 브라우저명 등 브라우저 정보에 관한 객체
+|프로퍼티|설명|
+|---|:---:|
+|appCodeName|브라우저의 코드명을 반환|
+|appName|브라우저 명|
+|appVersion|브라우저 버전|
+|platform|플랫폼 명|
+|userAgent|브라우저의 코드명과 버전을 반환|
+	
+WEB/studyhtml/WebContent/js/j08/h10.html
+
+```html
+
+```
