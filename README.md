@@ -2157,7 +2157,8 @@ top=0 : 위쪽에 창을 고정(ex. top=100 이런식으로 조절)
 		bt.onclick = function name(){
 // 			  window.open('http://cafe.daum.net/pcwk','pcwk','width=600, height=400, left=100, top=10');	
 // 			  window.open('/studyhtml/js/j08/h03.html','pcwk','width=600, height=400, left=100, top=10');	
-			  window.open('/studyhtml/js/j08/h03.html','pcwk','toolbar=yes, width=600, height=400, left=100, top=10');	
+// 			  window.open('/studyhtml/js/j08/h03.html','pcwk','toolbar=yes, width=600, height=400, left=100, top=10');	
+			window.open('/studyhtml/js/j08/h03.html','pcwk','resizavle=yes, toolbar=yes, width=600, height=400, left=100, top=10');
 		}; 
 	};
 </script>
