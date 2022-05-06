@@ -2072,3 +2072,8 @@ WEB/studyhtml/WebContent/js/j08/h03.html
 </html>
 ```
 
+# BOM(Browser Object Model)
+	
+BOM은 브라우저와 컴퓨터 스크린에 접근 할 수 있는 객체의 모음.
+
+window 객체를 통해 접근
