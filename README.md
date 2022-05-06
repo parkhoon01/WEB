@@ -2028,5 +2028,47 @@ td 를 클릭하면 이벤트가 최상위 조상에서 시작해 아래로 전�
 
 WEB/studyhtml/WebContent/js/j08/h03.html
 ```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+    form,div,input{
+        margin: 12px;
+        border: 1px solid red;
+    }
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
 	
+	<form action="#">
+	   <div >
+            <input type="submit" value='클릭' />	   
+	   </div>
+	</form>
+	<script type="text/javascript">
+	   for(let elem of document.querySelectorAll('*')){
+		   // capture option
+		   // false : 버블링 단계에서 동작(default)
+		   // true : 캡처링 단계에서 동작
+		   // 캡처링 단계
+		   elem.addEventListener('click', e=>alert(`캡처링: ${elem.tagName}`), true);
+ 		   // 버블링 단계
+		   elem.addEventListener('click', e=>alert(`캡처링: ${elem.tagName}`));
+		   
+	   }
+	</script>
+</body>
+</html>
 ```
+
