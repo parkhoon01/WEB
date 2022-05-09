@@ -2996,3 +2996,12 @@ form은 document 객체의 하위 객체중 하나 입니다.
 form은 객체를 이용하면 form의 유효성 검사를 수행 할 수 있다.
 
 form 객체 선택
+form 객체에서 name속성으로 form요소를 선택
+
+|document.폼명.요소명|
+|:---:|
+|document.forms[index].elements[index]|
+|document.forms[index][index]|
+|document.forms['폼명'].elements[index]|
+|document.forms['폼명'][요소명]|
+
