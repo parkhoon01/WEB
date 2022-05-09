@@ -2734,3 +2734,82 @@ noText: 1
 row.onclick
 noText: 2
 ```
+
+## 요소와 속성의 생성 및 삭제
+
+요소를 생성하고 관계를 만들어 준다.
+
+|메서드|설명|
+|---|:---:|
+|createElement()|요소를 생성하는 메서드|
+|createTextNode()|텍스트를 생성하는 메서드|
+|appendChild()|요소를 부모와 자식관계로 만들어주는 메서드|
+|removeChild()|요소를 제거해 주는 메서드|
+
+WEB/studyhtml/WebContent/js/j09/h03.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+    div{
+        position: fixed;
+        left: 100px;
+        top: 10px;
+        width: 200px;
+        height: 200px;
+        background: #718c00; 
+    }
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		   let bt = document.getElementById('bt');	
+		   
+		   function popup(){
+			   let div = document.createElement('div');
+			   let p   = document.createElement('p');
+			   let txt = document.createTextNode('오늘은 16:00까지 수업 합니다.^^');
+			   
+			   // div -> p -> txt
+			   // p > txt
+			   p.appendChild(txt);
+			   
+			   // div > p
+			   div.appendChild(p);
+			   
+			   // body > div
+			   document.body.appendChild(div);
+			   
+		   };
+		   
+		   // 버튼 클릭 이벤트 감지
+		   bt.onclick = popup;
+	};
+</script>
+</head>
+<body>
+	<button id="bt">요소생성</button>
+</body>
+</html>
+```
+
+## 속성의 추가와 삭제
+
+|메서드|설명|
+|---|:---:|
+|getAttribute()|요소의 속성 값을 취득한다.|
+|setAttribute()|요소의 속성을 설정한다.|
+|removeAttribute()|요소의 속성을 제거한다.|
+
+WEB/studyhtml/WebContent/js/j09/h04.html
+```html
+
+```
