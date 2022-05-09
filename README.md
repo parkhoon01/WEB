@@ -3120,3 +3120,72 @@ WEB/studyhtml/WebContent/js/j09/h08.html
 </html>
 ```
 
+## select 요소의 option요소 추가, 삭제
+
+|document.form요소.select요소.add(new Option('옵션내용','옵션값'));|
+|:---:|
+|document.form요소.select요소.length = option요소 수|
+
+
+|년도|월|과목|
+|:---:|:---:|:---:|
+|1970~2022|||
+
+
+WEB/studyhtml/WebContent/js/j09/h09.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+// 	    console.log(`window.onload`);		
+	    let frm = document.frm;
+	    let date = new Date();
+	    let year = date.getFullYear();
+	    console.log(`year: ${year}`);
+	    
+	    // 년도 추가
+	    for(let i=1970; i<=year; i++){
+// 	    document.form요소.select요소.add(new Option('옵션내용','옵션값'));
+	        frm.y.add(new Option(i,i));
+	    }
+	    
+	    // 월 추가
+	    for(let i=1; i<=12; i++){
+	    	frm.m.add(new Option(i,i));
+	    }
+	    
+// 	    document.form요소.select요소.length = option요소 수
+//         보여주는 개수를 설정
+	    frm.m.length = 3;
+	    
+	};
+</script>
+</head>
+<body>
+    <form action="#" name="frm">
+        <select name="y">
+            <option value="#">년도 선택</option>
+        </select>
+        
+        <select name="m">
+            <option value="#">월 선택</option>
+        </select>
+        
+    </form>	
+</body>
+</html>
+```
+
