@@ -2264,6 +2264,8 @@ WEB/studyhtml/WebContent/js/j08/h06.html
 </body>
 </html>
 ```
+	
+</hr>
   
 ## location객체
 
@@ -2319,6 +2321,8 @@ WEB/studyhtml/WebContent/js/j08/h07.html
 </body>
 </html>
 ```
+	
+</hr>
   
 ## screen 객체
   
@@ -2376,6 +2380,8 @@ WEB/studyhtml/WebContent/js/j08/h08.html
 </body>
 </html>
 ```
+	
+</hr>
 
 ## history 객체
 	
@@ -2418,6 +2424,8 @@ WEB/studyhtml/WebContent/js/j08/h09.html
 </body>
 </html>
 ```
+	
+</hr>
 	
 ## navigator객체
 	
@@ -2498,6 +2506,8 @@ WEB/studyhtml/WebContent/js/j08/h10.html
 </body>
 </html>
 ```
+	
+</hr>
 
 ## DOM(Document Object Model)
 
@@ -2575,6 +2585,8 @@ WEB/studyhtml/WebContent/js/j08/h11.html
 </body>
 </html>
 ```
+	
+</hr>
 
 ## 선택한 요소의 현재위치를 기준으로 다른 요소 선택.
 
@@ -2735,6 +2747,8 @@ row.onclick
 noText: 2
 ```
 
+</hr>
+
 ## 요소와 속성의 생성 및 삭제
 
 요소를 생성하고 관계를 만들어 준다.
@@ -2800,6 +2814,8 @@ WEB/studyhtml/WebContent/js/j09/h03.html
 </body>
 </html>
 ```
+
+</hr>
 
 ## 속성의 추가와 삭제
 
@@ -2867,6 +2883,8 @@ WEB/studyhtml/WebContent/js/j09/h04.html
 </html>
 ```
 
+</hr>
+
 ## innerHtml
 
 문자 방식으로 요소를 생성하는 방식!
@@ -2920,6 +2938,7 @@ WEB/studyhtml/WebContent/js/j09/h05.html
 </body>
 </html>
 ```
+</hr>
 
 ## 스타일
 자바스크립트 스타일 형식
@@ -2969,3 +2988,11 @@ WEB/studyhtml/WebContent/js/j09/h06.html
 </html>
 ```
 
+</hr>
+
+## form 객체
+
+form은 document 객체의 하위 객체중 하나 입니다.
+form은 객체를 이용하면 form의 유효성 검사를 수행 할 수 있다.
+
+form 객체 선택
