@@ -2811,5 +2811,161 @@ WEB/studyhtml/WebContent/js/j09/h03.html
 
 WEB/studyhtml/WebContent/js/j09/h04.html
 ```html
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+    div{
+        position: fixed;
+        left: 100px;
+        top: 10px;
+        width: 200px;
+        height: 200px;
+        background: #718c00; 
+    }
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+		function createAttribute(){
+			console.log(`createAttribute`);
+			
+			let bt = document.getElementById('bt');
+			
+			function popup(){
+// 				console.log(`popup`);
+			    let div = document.createElement('div');
+			    let a = document.createElement('a');
+			    let txt = document.createTextNode('PCWK Cafe');
+			    
+			    // a > txt
+			    // <a>PCWK Cafe</a>
+			    a.appendChild(txt);
+			    
+			    // href 추가
+			    a.setAttribute('href','https://cafe.daum.net/pcwk');
+			    a.setAttribute('target','_blank');
+			    a.setAttribute('title','새탭');
+			    
+			    // div > a
+			    div.appendChild(a);
+			    
+			    // body에 div 추가
+			    document.body.appendChild(div);
+			};
+			bt.onclick = popup	
+		}
+		
+		addEventListener('load',createAttribute);
+</script>
+</head>
+<body>
+    <button id="bt">요소속성 생성</button>
+	
+</body>
+</html>
 ```
+
+## innerHtml
+
+문자 방식으로 요소를 생성하는 방식!
+
+WEB/studyhtml/WebContent/js/j09/h05.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+    div{
+        position: fixed;
+        left: 100px;
+        top: 10px;
+        width: 200px;
+        height: 200px;
+        background: #718c00; 
+    }
+    
+    .m1{
+    background: #fff;
+    }
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<!-- innerHtml
+    문자방식으로 요소를 생성하는 방식!
+
+ -->
+<script type="text/javascript">
+		function createEle(){
+// 			console.log(`createEle`);
+		    let content = document.getElementById('content');
+		    content.innerHTML = '<p class="m1">자바스크립트</p>';
+		}
+		
+		// addEventListener, 함수이름에() 붙일 필요 없음
+		addEventListener('load',createEle);
+</script>
+</head>
+<body>
+    <div id="content">
+        
+    </div>	
+</body>
+</html>
+```
+
+## 스타일
+자바스크립트 스타일 형식
+```
+요소.style.속성 = '속성값';
+```
+|CSS| 자바스크립트 css||
+|:---:|:---:|---|
+|background-color|`backgroundColor`|-가 없어지고 camel case로 변경하면 된다.|
+|border-bottom-width|`borderBottomWidth`|
+
+WEB/studyhtml/WebContent/js/j09/h06.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		let content = document.getElementById('content');
+		content.style.border = '4px solid #718c00';
+		content.style.width = '200px';
+		content.style.height = '200px';
+		content.style.textAlign = 'center';		
+		content.style.lineHeight = '200px';
+		// width
+		// height
+		// border
+	};
+</script>
+</head>
+<body>
+	<h2>자바스크립트 스타일 형식</h2>
+	<hr/>
+	<div id="content">내용</div>
+</body>
+</html>
+```
+
