@@ -2519,6 +2519,7 @@ html요소의 선택, 생성, 수정, 삭제를 위해 사용
 |querySelector()|선택된 요소중 첫 번째 요소만 선택|
 |querySelectorAll()|선택한 요소의 전체를 선택|
 	
+WEB/studyhtml/WebContent/js/j08/h11.html
 ```html
  <!--Html comment-->
 <!DOCTYPE html>
@@ -2573,4 +2574,163 @@ html요소의 선택, 생성, 수정, 삭제를 위해 사용
     </div>
 </body>
 </html>
+```
+
+## 선택한 요소의 현재위치를 기준으로 다른 요소 선택.
+
+ex) 게시판 목록 click해서 pk 찾기
+
+|속성값|설명|
+|---|:---:|
+|`parentNode`|선택된 요소의 부모|
+|childNodes|선택된 요소의 자식 노드들(요소, 텍스트 노드), enter를 text로 인식함|
+|`children`|선택된 요소의 자식 노드들(요소, 텍스트 노드), enter를 text로 인식안함|
+|nextSibling|선택된 요소의 다음 형제 노드|
+|previousSibling|선택된 요소의 이전 형제 노드|
+|`firstChild`|선택된 요소의 자식노드 중 첫 번째 노드를 선택|
+|`lastChild`|선택된 요소의 자식노드 중 마지막 노드를 선택|
+|tagName|선택된 요소의 태그명|
+|nodeValue|선택된 요소의 노드 값|
+|nodeType|선택된 요소의 노트 타입|
+|id|선택된 요소의 id값 반환|
+|className|선택된 요소의 class값 반환|
+	
+WEB/studyhtml/WebContent/js/j09/h01.html
+```html
+<link rel="shortcut icon" type="image/x-icon"
+	href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type="text/css">
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function() {
+		let gnb = document.querySelector('#gnb');
+		console.log(`window.onload`);
+		console.log(`gnb.parentNode: ${gnb.parentNode}`);
+		console.log(`gnb.children[0]: ${gnb.children[0]}`);
+		console.log(`gnb.children[0].children[0]: ${gnb.children[0].children[0]}`);
+		
+		console.log(`gnb.children[0].children[0].nextElementSibling: ${gnb.children[0].children[0].nextElementSibling}`);
+		console.log(`gnb.children[0].children[0].previousElementSibling: ${gnb.children[0].children[0].previousElementSibling}`);
+		
+		console.log(`gnb.children[0].firstChild: ${gnb.children[0].firstChild}`);
+		console.log(`gnb.children[0].lastChild: ${gnb.children[0].lastChild}`);
+
+	};
+</script>
+</head>
+<body>
+	<!-- 
+|속성값|설명|
+|---|:---:|
+|`parentNode`|선택된 요소의 부모|
+|childNodes|선택된 요소의 자식 노드들(요소, 텍스트 노드), enter를 text로 인식함|
+|`children`|선택된 요소의 자식 노드들(요소, 텍스트 노드), enter를 text로 인식안함|
+|nextSibling|선택된 요소의 다음 형제 노드|
+|previousSibling|선택된 요소의 이전 형제 노드|
+|`firstChild`|선택된 요소의 자식노드 중 첫 번째 노드를 선택|
+|`lastChild`|선택된 요소의 자식노드 중 마지막 노드를 선택|
+|tagName|선택된 요소의 태그명|
+|nodeValue|선택된 요소의 노드 값|
+|nodeType|선택된 요소의 노트 타입|
+|id|선택된 요소의 id값 반환|
+|className|선택된 요소의 class값 반환|
+ -->
+	<h2>상대 위치로 선택</h2>
+	<hr />
+	<div>
+		<nav id="gnb">
+			<ul>
+				<li class="first">오늘은 즐거운 월요일</li>
+				<li>내용2</li>
+				<li>내용3</li>
+			</ul>
+		</nav>
+	</div>
+</body>
+</html>
+```
+	
+결과
+```
+window.onload
+gnb.parentNode: [object HTMLDivElement]
+gnb.children[0]: [object HTMLUListElement]
+gnb.children[0].children[0]: [object HTMLLIElement]
+gnb.children[0].children[0].nextElementSibling: [object HTMLLIElement]
+gnb.children[0].children[0].previousElementSibling: null
+gnb.children[0].firstChild: [object Text]
+gnb.children[0].lastChild: [object Text]
+```
+
+WEB/studyhtml/WebContent/js/j09/h02.html
+
+```html
+	<hr/>
+	
+	<table id="tableList">
+	   <thead>
+	       <tr>
+	           <th>NO.</th>
+	           <th>제목</th>
+	           <th>글쓴이</th>
+	           <th>작성일</th>
+	           <th>추천</th>
+	           <th>조회수</th>
+	       </tr>
+	   </thead>
+	   <tbody id="tableTbody">
+	       <tr>
+	           <td>1</td>
+	           <td>j05_동영상</td>
+	           <td class="t_center">이상무</td>
+	           <td class="t_center">2022-05.09</td>
+	           <td class="t_right">0</td>
+	           <td class="t_right">1</td>
+	       </tr>
+	       
+	       <tr>
+               <td>2</td>
+               <td>j06_동영상</td>
+               <td class="t_center">이상무2</td>
+               <td class="t_center">2022-05.09</td>
+               <td class="t_right">0</td>
+               <td class="t_right">2</td>
+           </tr>
+           
+           <tr>
+               <td>3</td>
+               <td>j07_동영상</td>
+               <td class="t_center">이상무3</td>
+               <td class="t_center">2022-05.09</td>
+               <td class="t_right">0</td>
+               <td class="t_right">3</td>
+           </tr>
+           
+           <tr>
+               <td>4</td>
+               <td>j08_동영상</td>
+               <td class="t_center">이상무4</td>
+               <td class="t_center">2022-05.09</td>
+               <td class="t_right">0</td>
+               <td class="t_right">4</td>
+           </tr>
+	   </tbody>
+	</table>
+	
+</body>
+</html>
+```
+
+결과
+```
+window.onload
+rows.length: 5
+row.tagName: TR
+row.onclick
+noText: 1
+row.onclick
+noText: 2
 ```
