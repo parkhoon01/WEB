@@ -3005,3 +3005,118 @@ form 객체에서 name속성으로 form요소를 선택
 |document.forms['폼명'].elements[index]|
 |document.forms['폼명'][요소명]|
 
+WEB/studyhtml/WebContent/js/j09/h07.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+		console.log(`window.onload`);
+		
+		let frm1 = document.frm1;
+		let frm2 = document.frm2;
+		// 검색어.placeholder 선택
+		console.log(`frm1.search.placeholder: ${frm1.search.placeholder}`);	
+		console.log(`frm2.subject.placeholder: ${frm2.subject.placeholder}`);	
+		
+		console.log(`document.forms[0].elements[0].placeholder: ${document.forms[0].elements[0].placeholder}`);
+		console.log(`document.forms[1][1].placeholder: ${document.forms[1][1].placeholder}`);
+		
+		// 요소 이름으로 접근
+		console.log(`document.forms['frm1'].elements['search'].placeholder: ${document.forms['frm1'].elements['search'].placeholder}`);
+		console.log(`document.forms['frm2']['subject'].placeholder: ${document.forms['frm2']['subject'].placeholder}`);
+	};
+</script>
+</head>
+<body>
+    <form action="#" name="frm1">
+        <input type="text" name="search" placeholder="검색어 입력">
+        <input type="submit" value="확인">
+    </form>
+    <form action="#" name="frm2">
+        <input type="text" name="subject" placeholder="과목입력">
+        <input type="password" name="credit" placeholder="학점입력">
+        <input type="submit" value="확인">
+    </form>	
+</body>
+</html>
+```
+
+## form 객체의 프로퍼티 메서드
+input 속성값
+
+![7](https://user-images.githubusercontent.com/104181668/167335361-cade5a1f-2ed7-4276-a072-01c042393583.png)
+
+![8](https://user-images.githubusercontent.com/104181668/167336261-98300f2b-bfc4-476a-9964-ab25e2844e1c.png)
+
+
+WEB/studyhtml/WebContent/js/j09/h08.html
+```html
+<!-- 스타일 시트-->
+<style type = "text/css">
+
+</style>
+<title>Insert title here</title>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	window.onload = function(){
+	    console.log(`window.onload`);		
+	    
+	    // login form 가지고 오기
+	    let loginForm = document.login;
+	    
+	    // submit 이벤트 감지
+	    loginForm.onclick = function(){
+	    	   console.log(`loginForm.onsubmit`);	
+	    	   
+	    	   // id값 가져오기
+	    	   if(!loginForm.id.value){   // id에 값이 없으면
+	    		   loginForm.id.focus();
+	    		   alert('아이디를 입력하세요.');
+	    		   return false;
+	    	   }
+	    	   
+	    	   // 비번값 가져오기
+	    	   if(!loginForm.passwd.value){
+	    		   loginForm.passwd.focus();
+	    		   alert('비번를 입력하세요.');
+	    		   return false;
+	    	   }
+	    };
+	};
+</script>
+</head>
+<body>
+	<h2></h2>
+	<hr/>
+	<form action="#" name="login" method="get">
+	   <table>
+	       <tr>
+	           <td><label for="id">아이디</label></td>
+	           <td><input type="text" name="id" id="id" /></td>
+	       </tr>
+	       
+	       <tr>
+               <td><label for="passwd">비밀번호</label></td>
+               <td><input type="text" name="passwd" id="passwd" /></td>
+           </tr>
+	   </table>
+	</form>
+	<input type="submit" value="로그인"/>
+	<input type="reset" value="취소" />
+</body>
+</html>
+```
+
