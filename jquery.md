@@ -546,9 +546,9 @@ key: grade, value: 1
 key: days, value: 20
 ```
 
+```
 2. $(selector).each()메서드
 
-```
 요소에 개별적으로 접근하여 for문과 같은 반복적인 명령 처리가 가능
 ```
 
@@ -595,3 +595,125 @@ key: days, value: 20
 </html>
 ```
 
+```
+3. $.map()메서드
+	$.each()와 동일한 기능
+	return을 받을 수 있어 배열 copy 가능
+	
+	$.map(배열명,function(value,index){
+	
+	});
+	
+```
+
+/studyhtml/WebContent/jq/j07.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- reset 스타일 시트 -->
+<link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css">
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK document');
+		let city = ['한강','부산','집','속초','제주도'];
+		
+		// copy해서 새로운 배열 생성
+		let newCity = $.map(city, function(value, i){
+			if(i<2){
+				return value;
+			}
+		});
+		
+		console.log(`newCity: ${newCity.toString()}`);
+	});
+</script>
+</head>
+<body>
+	<h2></h2>
+	<hr/>
+	
+</body>
+</html>
+```
+ <hr/>
+ 
+# `요소 관련 메서드`
+
+text(),html() : 취득, 생성, 변경, 가공도 가능
+
+|실행|형식|
+|---|:---:|
+|취득|$('div').text()|
+|생성,변경|$('div').text('생성 및 변경')|
+```
+콜백 함수
+$('div').text(function(index,text){
+		div요소의 index는 인덱스
+		div요소의 내용
+		return 텍스트;
+});
+```
+
+/studyhtml/WebContent/jq/j08.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- reset 스타일 시트 -->
+<link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css">
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK document');
+        // id가 m1인 텍스트 추출
+	    console.log('id가 m1 텍스트: ' + $('#m1').text());
+        
+        // 값 변경
+        $('#m1').text('빨리 집에 가고 싶다.');
+        
+        // m2 아래 있는 div 모두 선택
+        $('#m2 > div').text(function(index, t){
+        	console.log(`index: ${index}, t: ${t}`);
+        	
+        	return `index: ${index}, t: ${t}`;
+        });
+	});
+</script>
+</head>
+<body>
+	<h2>text()</h2>
+	<hr/>
+	<div id="m1">jQuery</div>
+	<div id="m2">
+	   <div>html</div>
+	   <div>css</div>
+	   <div>javascript</div>
+	</div>
+	
+</body>
+</html>
+```
