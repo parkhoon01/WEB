@@ -480,3 +480,118 @@ jquery 코드 완성 지원 plug-in
 	
 	});	
 ```
+
+/studyhtml/WebContent/jq/j05.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- reset 스타일 시트 -->
+<link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css">
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log('PCWK document');
+		
+		let city = ['청와대','한강','부산','집','속초'];
+		
+		$.each(city, function(index, value) {
+			console.log(`index: ${index}, value: ${value}`);
+		});
+		
+		// ** 중요함!!
+		let subjectInfo = {
+				  subject: "html",
+				  grade: 1,
+				  days: 20
+		};
+		
+		$.each(subjectInfo, function(key,value){
+			console.log(`key: ${key}, value: ${value}`);
+		});
+		
+		
+	});
+</script>
+</head>
+<body>
+	<h2>배열 관련 메서드 : $.each()</h2>
+	<hr/>
+	
+</body>
+</html>
+```
+
+결과
+```
+PCWK document
+index: 0, value: 청와대
+index: 1, value: 한강
+index: 2, value: 부산
+index: 3, value: 집
+index: 4, value: 속초
+key: subject, value: html
+key: grade, value: 1
+key: days, value: 20
+```
+
+2. $(selector).each()메서드
+
+```
+요소에 개별적으로 접근하여 for문과 같은 반복적인 명령 처리가 가능
+```
+
+/studyhtml/WebContent/jq/j06.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<!-- reset 스타일 시트 -->
+<link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css">
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK document');
+		
+		$('div').each(function(index, element) {
+// 			console.log(`index: ${index}, element: ${element}`);
+// 		    console.log($(this).attr('class'));
+		    // $(this) :  div:eq(0), div:eq(1), div:eq(2)
+		});
+	});
+</script>
+</head>
+<body>
+	<h2></h2>
+	<hr/>
+	
+	<div class="m1">속초</div>
+	<div class="m2">서핑</div>
+	<div class="m3">낚시</div>
+	
+</body>
+</html>
+```
+
