@@ -127,9 +127,68 @@ $('.class선택자')
 |선택자|설명|
 |---|:---:|
 |태그 선택자|$('p'): html의 p 요소 선택|
-|`id 선택자`|`$("#gnb"): html의 요소 id 가 gnb인 요소 선택`|
-|`class 선택자`|`$(".logo"): style이 logo인 요소`|
-|`자식 선택자`|`$("#gnb>ul>li"): html요소에 id가 gnb인 요소 자식 ul 자식 li`|
-|하위 선택자|$("#gnb ul"): html요소에 id가 gnb인 요소의 모든 ul요소 선택|
-|종속 선택자|$("div.util"): html div요소에 style util 요소 선택|
+|`id 선택자`|`$('#gnb'): html의 요소 id 가 gnb인 요소 선택`|
+|`class 선택자`|`$('.logo'): style이 logo인 요소`|
+|`자식 선택자`|`$('#gnb>ul>li'): html요소에 id가 gnb인 요소 자식 ul 자식 li`|
+|하위 선택자|$('#gnb ul'): html요소에 id가 gnb인 요소의 모든 ul요소 선택|
+|종속 선택자|$('div.util'): html div요소에 style util 요소 선택|
+
+/studyhtml/jq/jq01/jq01.html
+```html
+		$('.left, .right, #banner').css('border','4px solid gray'); // 그룹 선택자
+	});
+</script>
+</head>
+<body>
+	<h2>기본 선택자</h2>
+	<hr/>
+	
+	<header id="header">
+	   <div class="logo">로고</div>
+	   <div class="util">회원가입</div>
+	   
+	   <nav id="gnb">
+	       <ul>
+	           <li>메뉴1
+	               <ul>메뉴 1-1</ul>
+	           </li>
+	       </ul>
+	   </nav>
+	   
+	   <div id="visual">
+	       <p>비주얼</p>
+	   </div>
+	   
+	   <div id="content">
+	       <div class="left">왼쪽</div>
+	       <div class="right">
+	           <div class="util">오른쪽</div>
+	       </div>
+	   </div>
+	   
+	   <div id="banner">배너</div>
+	   <footer id="footer">footer</footer>
+	</header>
+	
+</body>
+</html>
+```
+<hr/>
+
+# jquery_code_assist
+
+## tern
+
+jquery 코드 완성 지원 plug-in
+
+[download url] https://dcom20220127.slack.com/archives/C030THU1ANM/p1652146306624289
+
+[jquery API] https://api.jquery.com/
+
+
+<hr/>
+
+# 속성 선택자
+
+![9](https://user-images.githubusercontent.com/104181668/167530588-46fa491d-bc71-4378-b5d8-3ea222d40fa7.png)
 
