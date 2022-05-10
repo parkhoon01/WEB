@@ -253,7 +253,7 @@ jquery 코드 완성 지원 plug-in
 
 /studyhtml/WebContent/jq/j03.html
 ```html
- <!--Html comment-->
+  <!--Html comment-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -295,7 +295,12 @@ jquery 코드 완성 지원 plug-in
 		$('li:eq(0)').css('background','navy');
 		
 		// h1~h6: header
-		$(':header').css('background','blue')
+		$(':header').css('background','blue');
+		
+		// li:gt(0): 0보다 큰
+		$('li:gt(0)').css('background','purple');
+		
+		// li:lt(0): 0보다 작은
 	});
 </script>
 </head>
@@ -347,3 +352,4 @@ jquery 코드 완성 지원 plug-in
 </html>
 ```
 
+<img width="719" alt="11" src="https://user-images.githubusercontent.com/104181668/167537694-10e6a433-e34f-4cb0-8b28-59fea84c298a.png">
