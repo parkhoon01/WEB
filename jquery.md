@@ -353,6 +353,28 @@ jquery 코드 완성 지원 plug-in
 ```
 
 결과
-```
+
 <img width="719" alt="11" src="https://user-images.githubusercontent.com/104181668/167537694-10e6a433-e34f-4cb0-8b28-59fea84c298a.png">
+
+<hr/>
+
+# `자식 필터`
+
+`child, of-type`
+
 ```
+child가 붙은 선택자는 요소가 순차적으로 나열되어 있을 때 사용.	
+	ex) nth-child(): $('span:nth_child(2)'): span의 2번째 요소 선택
+	
+of-type이 붙은 선택자는 요소가 순차적으로 나열되어 있지 않아도 동일 요소면 선택 가능.
+```
+
+<hr/>
+
+# `폼 필터 선택자`
+
+```
+폼 요소와 관련된 속성을 선택하는 방법
+```
+
+![12](https://user-images.githubusercontent.com/104181668/167538331-d2a6d979-fd5f-4e98-b0ec-3ba4066d442f.png)
