@@ -8,17 +8,17 @@
 /* 웹 폰트 */
 @font-face {
     font-family: 'NG';
-    src: url("/studyhtml5/font/NanumGothic.woff") format('woff');
+    src: url("/studyhtml/font/NanumGothic.woff") format('woff');
 }
 
 @font-face {
     font-family: 'NGB';
-    src: url("/studyhtml5/font/NanumGothicBold.woff") format('woff');
+    src: url("/studyhtml/font/NanumGothicBold.woff") format('woff');
 }
 
 @font-face {
     font-family: 'NGEB';
-    src: url("/studyhtml5/font/NanumGothicExtraBold.woff") format('woff');
+    src: url("/studyhtml/font/NanumGothicExtraBold.woff") format('woff');
 }
 
 html{
