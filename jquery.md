@@ -743,6 +743,7 @@ jsp 모든 페이지에 include가능, 소스는 한쪽에서만 관리
    response.setHeader("Cache-Control", "no-cache"); 
 %>
 ```
+<hr/>
 
 # `html 메서드`
 
@@ -822,6 +823,7 @@ $('div').html(function(index,h){
 </body>
 </html>
 ```
+<hr/>
 
 # `클래스 관련 메서드`
 
@@ -915,6 +917,7 @@ $('div').addClass(function(index,className()){
 </body>
 </html>
 ```
+<hr/>
 
 # `removeClass()메서드`
 요소의 class속성 제거
@@ -1008,6 +1011,7 @@ $('div').removeClass(function(index,className()){
 </body>
 </html>
 ```
+<hr/>
 
 # `toggleClass() 메서드` 
 ex) 메뉴 펼침 닫음
@@ -1029,4 +1033,155 @@ ex)
 	}
 	
 	<div id="box" class="m">내용</div>
+```
+<hr/>
+
+# `속성관령 메서드`
+attr()메서드
+선택한 요소의 attribute(속성)을 선택, 생성, 변경할 수 있다.
+
+|실행|형식|
+|:---:|:---:|
+|취득|$('a').attr('href')|
+|생성,변경|$('a').attr('href','http://daum.net').attr('target','_blank');|
+
+```
+콜백함수
+	$('a').attr('href',function(index,h){
+		// h: href의 속성
+		return attribute(속성);
+	}
+```
+
+/studyhtml/jq/jq02/jq04.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+	<h2>attr()</h2>
+	<hr/>
+	<div id="site">
+	   <!-- target: _blank(새창) -->
+	   <a href="https://cafe.daum.net/pcwk" target="_blank">다음 카페</a>
+	   <a href="https://www.naver.com" target="_blank">네이버</a>
+	   <a href="https://www.nate.com" target="_blank">네이트</a>
+	</div>
+	
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK *** document');
+	    console.log($('#site > a:eq(0)').attr('href'));    // https://cafe.daum.net/pcwk
+	    
+	    // https://m.naver.com/ 변경
+	    console.log($('#site > a:eq(1)').attr('href','https://m.naver.com/'));
+	    
+	    // callback
+	    
+	    $('#site > a').attr('title',function(i,value){
+	    	console.log(`i: ${i}, value: ${value}`);
+	    	return '비둘기';
+	    });
+	});
+</script>
+</body>
+</html>
+```
+<hr/>
+
+# `prop() 메서드`
+자바스크립트의 property에 관련된 메서드
+prop()메서드는 요소의 속성을 true, false로 제어
+
+/studyhtml/jq/jq02/jq05.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+	<h2>prop() 메서드</h2>
+	<hr/>
+	<input type="checkbox" id="html" name="html"><label for="html">html</label>
+	<input type="checkbox" id="css" name="csss"><label for="css">css</label>
+	
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK *** document');
+	    console.log($('input:checkbox').eq(0).attr('checked'));
+	    console.log($('input:checkbox').eq(0).prop('checked'));
+	    
+	    $('input:checkbox').eq(0).attr('checked','checked');
+	    $('input:checkbox').eq(1).prop('checked','true');
+	    // = $('html')
+	});
+</script>
+</body>
+</html>
+```
+<hr/>
+
+# `스타일 관련 메서드`
+css()
+
+실행|형식|
+|---|:---:|
+|취득|$('a').css('width')|
+|생성,변경|$('a').css('background','red').css('padding','10px');|
+
+```
+콜백 함수
+$('a').css('width',function(index,w){
+		return css속성;
+});
+```
+
+/studyhtml/jq/jq02/jq06.html
+```html
+
 ```
