@@ -831,7 +831,7 @@ addClass()메서드 : 요소에 클래스 추가
 |---|:---:|
 ||$('div').addClass('클래스명')|
 
-````
+```
 콜백 함수
 $('div').addClass(function(index,className()){
 		div요소의 index는 인덱스
