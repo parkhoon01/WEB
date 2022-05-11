@@ -717,3 +717,126 @@ $('div').text(function(index,text){
 </body>
 </html>
 ```
+
+<hr/>
+
+# `html 캐시 컨트롤`
+html head에 메타 태그 이용
+
+```html
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+```
+
+# `jsp 캐시 컨트롤`
+jsp 모든 페이지에 include가능, 소스는 한쪽에서만 관리
+
+```jsp
+<% response.setHeader("Pragma","no-cache"); 
+   response.setDateHeader("Expires",0); 
+   response.setHeader("Cache-Control", "no-cache"); 
+%>
+```
+
+# `html 메서드`
+
+선택한 요소의 html을 취득, 생성, 변경 가능
+
+실행|형식|
+|---|:---:|
+|취득|$('div').html()|
+|생성,변경|$('div').html('생성 및 변경')|
+
+```
+콜백 함수
+$('div').html(function(index,h){
+		div요소의 index는 인덱스
+		div요소의 내용
+		return html;
+});
+```
+
+/studyhtml/jq/jq02/jq01.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css">
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+
+</head>
+<body>
+	<h2>html() 메서드</h2>
+	<hr/>
+	<div id="m1"><strong>jQuery</strong></div>
+	<div id="m2">
+	   <div><em>html</em></div>
+	   <div><em>css</em></div>
+	   <div><em>javascript</em></div>
+	</div>
+	
+	
+	<!-- 자바스크립트 코드 -->
+	<script type="text/javascript">
+	    $(document).ready(function(){
+// 	        console.log('PCWK *** document');
+
+            // html 취득
+	        console.log($('#m1').html());  // <strong>jQuery</strong>
+	        console.log($('#m1').text());  // jQuery
+	        
+	        // html 생성, 변경
+	        console.log($('#m1').html('<h3>html</h3>'));
+	        
+	        $('#m2 > div').html(function(index,h){
+	        	console.log(`index: ${index}, h: ${h}`);
+	        	return `<strong>index: ${index}, h:${h}</strong>`;
+	        });
+	    });
+	</script>
+</body>
+</html>
+```
+
+# `클래스 관련 메서드`
+
+addClass()메서드 : 요소에 클래스 추가
+
+|실행|형식|
+|---|:---:|
+|취득|$('div').html()|
+|생성,변경|$('div').html('생성 및 변경')|
+
+```
+콜백 함수
+$('div').html(function(index,h){
+		div요소의 index는 인덱스
+		div요소의 내용
+		return html;
+});
+```
