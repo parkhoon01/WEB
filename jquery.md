@@ -829,7 +829,7 @@ addClass()메서드 : 요소에 클래스 추가
 
 |실행|형식|
 |---|:---:|
-||$('div').addClass('클래스명')|
+|추가|$('div').addClass('클래스명')|
 
 ```
 콜백 함수
@@ -1007,4 +1007,26 @@ $('div').removeClass(function(index,className()){
 </script>
 </body>
 </html>
+```
+
+# `toggleClass() 메서드` 
+ex) 메뉴 펼침 닫음
+요소의 class속성이 없으면 addClass()가 적용, class속성이 있으면 removeClass()가 적용
+
+|실행|형식|
+|---|:---:|
+|추가,제거|$('div').toggleClass('클래스명')|
+
+# `hasClass()메서드`
+if문의 조건식에 사용, 선택한 요소에 클래스가 있으면 true, 없으면 false
+```
+ex)
+	if($('#box').hasClass('m')){
+		
+	}
+	else{
+	
+	}
+	
+	<div id="box" class="m">내용</div>
 ```
