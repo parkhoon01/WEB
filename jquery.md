@@ -1181,7 +1181,151 @@ $('a').css('width',function(index,w){
 });
 ```
 
-/studyhtml/jq/jq02/jq06.html
+/studyhtml/jq/jq02/jq07.html
 ```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+    div:nth-child(1) {
+	   background: red;
+    }
+    
+    div:nth-child(2) {
+        background: green;	
+    }
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+	<h2>css()</h2>
+	<hr/>
+	<div>
+		<div>내용1</div>
+		<div>내용2</div>
+		<div>내용3</div>
+	</div>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log('PCWK *** document');
+		$('div:nth-child(1)').css({padding:10, "text-align": "center"});
+// 		$('div:nth-child(1)').css('padding','10').css('text-align','center');
 
+// 	    $('div').css('width', function(index){
+// 	    	console.log(`index: ${index}, ${index*100+100});
+// 	    	return index * 100 + 100;
+// 	    });
+	});
+</script>
+</body>
+</html>
 ```
+
+# `jQuery이벤트`
+jQuery이벤트는 javascript이벤트와 유사
+
+마우스 이벤트
+|이벤트|설명|
+|---|:---:|
+|click()|마우스 클릭 이벤트|
+|dbclick()|마우스 더블 클릭 이벤트|
+|mouseenter()|마우스가 포인터 안에 들어 왔을 때|
+|mouseleave()|마우스가 포인터 밖을 나갔을 때|
+
+/studyhtml/jq/jq02/jq07.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+    .bg{
+        padding: 40px;
+        margin-bottom: 40px;
+        background: #ccc;
+    }
+    
+    .inner{
+        padding: 20px;
+        background: #999;
+    }
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+	<h2>마우스 이벤트</h2>
+	<hr/>
+	
+	<div class="wrap1 bg">
+	   <div class="inner">마우스 오버</div>
+	</div>
+	
+	<div class="wrap2 bg">
+       <div class="inner">마우스 enter</div>
+    </div>
+    
+    <div class="display"></div>
+	
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK *** document');
+        // mouseover()
+	    $('.wrap1').mouseover(function(){
+// 	    	console.log('wrap1 mouseover');
+	        $('.display').append('<strong>마우스오버</strong>');
+	    });
+        
+        // mouseenter()
+        $('.wrap2').mouseenter(function(){
+        	$('.display').append('<em>mouseenter</em>')
+        });
+	});
+</script>
+</body>
+</html>
+```
+
+<hr/>
+
+# `폼 관련 이벤트`
+
+![13](https://user-images.githubusercontent.com/104181668/167764300-90290652-b8b0-4b3f-b5ae-9c7dbe36cc13.png)
+
+![14](https://user-images.githubusercontent.com/104181668/167764319-d5f71053-95ad-4111-99ce-bd9b80bdadd0.png)
