@@ -1660,5 +1660,44 @@ jQuery이벤트는 javascript이벤트와 유사
 </html>
 ```
 
-# ``
+# `이벤트 연결 메서드`
 
+이벤트 직접 연결, 이벤트 메서드 이용(`동적 이벤트`)
+
+## 이벤트 직접 연결
+```
+	$(selector).이벤트(function(){
+	
+	});
+```
+
+## 이벤트 메서드 이용(동적 이벤트): on, off, one
+```
+$(selector).on('click',function(){
+	
+});
+```
+### 이벤트 제거
+```
+$(selector).off('click',function(){
+	
+});
+```
+### 이벤트 1회 수행
+```
+$(selector).one('click',function(){
+	
+});
+```
+### click과 focus이벤트
+```
+$(selector).on('click focus',function(){
+	
+});
+```
+### button
+``
+$(selector).on('click','button',function(){
+	
+});
+```
