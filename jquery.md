@@ -1696,7 +1696,7 @@ $(selector).on('click focus',function(){
 });
 ```
 ### button
-``
+```
 $(selector).on('click','button',function(){
 	
 });
