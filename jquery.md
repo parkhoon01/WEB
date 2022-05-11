@@ -829,14 +829,106 @@ addClass()메서드 : 요소에 클래스 추가
 
 |실행|형식|
 |---|:---:|
-|취득|$('div').html()|
-|생성,변경|$('div').html('생성 및 변경')|
+||$('div').addClass('클래스명')|
+
+````
+콜백 함수
+$('div').addClass(function(index,className()){
+		div요소의 index는 인덱스
+		div요소의 내용
+		return class속성;
+});
+```
+
+/studyhtml/jq/jq02/jq02.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+    #m2 {
+        text-align: center;
+    }
+    
+    .box{
+        border-bottom: 2px solid #ccc;
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .circle0,
+    .circle1,
+    .circle2
+    {
+        border: 4px solid #ff7700;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border-radius: 100px;
+        display: inline-block;
+    }
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+	<h2>addClass()</h2>
+	<hr/>
+	
+	<div id="m1">jQuery</div>
+	
+    <div id="m2">
+       <div>html</div>
+       <div>css</div>
+       <div>javascript</div>
+    </div>
+	
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK *** document');
+	    $('#m1').addClass('box');
+	    $('#m2 div').addClass(function(i){
+	    	console.log(`i: ${i}`);
+	    	return 'circle'+i;
+	    });
+	});
+</script>
+</body>
+</html>
+```
+
+# `removeClass()메서드`
+요소의 class속성 제거
+
+|실행|형식|
+|---|:---:|
+|삭제|$('div').removeClass('클래스명')|
 
 ```
 콜백 함수
-$('div').html(function(index,h){
+$('div').removeClass(function(index,className()){
 		div요소의 index는 인덱스
 		div요소의 내용
-		return html;
+		return class속성;
 });
 ```
+
