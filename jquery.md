@@ -2089,4 +2089,245 @@ $("button:eq(0)").on("click",function(event){
 ```
 <hr/>
 
-# ``
+# `jquery 효과`
+애니메이션 메서드
+
+![17](https://user-images.githubusercontent.com/104181668/167983630-2c68d5b8-7185-4931-a58c-0e0e8ca74daf.png)
+
+/studyhtml/jq/jq03/jq05.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+    *{
+        margin: 5px;
+    }
+    
+    .box{
+        width: 200px;
+        height: 200px;
+        border: 2px solid #333;
+        display: none;
+    }
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <div id="m1">
+        <button>show</button>
+        <button>hide</button>
+        <button>toggle</button>
+        <div class="box">내용1</div>
+    </div>
+    
+    <div id="m2">
+        <button>slideDown</button>
+        <button>slideUp</button>
+        <button>slideToggle</button>
+        <div class="box">내용2</div>
+    </div>
+	
+	<div id="m3">
+        <button>fadeIn</button>
+        <button>fadeOut</button>
+        <button>fadeToggle</button>
+        <div class="box">내용3</div>
+    </div>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK *** document');
+        // m3
+        $('#m3 button:eq(0)').on('click',function(){
+            $('#m3 .box').fadeIn('slow','swing', function(){
+            	$(this).text('오늘은 즐거운 목요일! 곧 점심시간!');
+            });
+        });
+            
+        $('#m3 button:eq(1)').on('click',function(){
+            $('#m3 .box').fadeOut('fast','swing', function(){
+                $(this).text('내일 즐거운 금요일!');
+            });
+        });
+        
+        $('#m3 button:eq(2)').on('click',function(){
+            $('#m3 .box').fadeToggle('fast','swing', function(){
+            	if($(this).css('display') == 'none'){
+            		$(this).html('<p>오늘은 즐거운 목요일! 곧 점심시간!</p>')
+            	}
+            	else{
+            		$(this).html('<p>내일은 더 즐거운 금요일!</p>')
+            	}
+            });
+        });
+            
+        // m2
+        $('#m2 button:eq(0)').on('click',function(){
+        	$('#m2 .box').slideDown();
+        });
+        
+        $('#m2 button:eq(1)').on('click',function(){
+            $('#m2 .box').slideUp('slow', 'swing');
+        });
+        
+        $('#m2 button:eq(2)').on('click',function(){
+            $('#m2 .box').slideToggle();
+        });
+
+        // m1
+	    $('#m1 button:eq(0)').on('click',function(){
+	    	$('#m1 .box').show();
+	    });
+	    
+	    $('#m1 button:eq(1)').on('click',function(){
+            $('#m1 .box').hide();
+        });
+	    
+	    $('#m1 button:eq(2)').on('click',function(){
+            $('#m1 .box').toggle('fast','swing');
+        });
+	});
+</script>
+</body>
+</html>
+```
+
+# `jquery plug-in`
+jQuery 플러그인을 이용하면 복잡하고 어려운 기능을 직접 제작하지 않아도 쉽게 구현할 수 있다.
+
+DATEPICKER
+
+https://jqueryui.com/datepicker/
+
+세팅
+/studyhtml/jq/jq03/jq06.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+ <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/jquery-ui.css">
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+<!-- jQuery UI -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-ui.js"></script>
+</head>
+<body>
+	<p>일정 확인: <input type="text" id="pwDatePicker"></p>
+	
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log('PCWK *** document');
+		
+		$('#pwDatePicker').datepicker();
+	});
+</script>
+</body>
+</html>
+```
+
+# DATEPICKER 한글화
+
+/studyhtml/jq/jq03/jq07.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/jquery-ui.css">
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+<!-- jQuery UI -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-ui.js"></script>
+</head>
+<body>
+	<h2>DATEPICKER한글화 FORMAT</h2>
+	<hr/>
+	
+	<div>기간설정
+	   <input type="text" class="datepicker" id="" name="">~<input type="text" class="datepicker" id="" name="">
+	</div>
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK *** document');
+		
+		$('.datepicker').datepicker({
+			dateFormat: 'yy-mm-dd',
+			changeYear: true,
+			changeMonth: true,
+			buttonImage: "/studyhtml/imgs/calendar_icon.png",
+			showOn: "button",
+			buttonText: "달력"
+		});
+		
+		/* 한글 format으로 달력 설정 */
+		$.datepicker.setDefaults({
+			dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+			dayNamesMin: ['일','월','화','수','목','금','토'],
+			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			showMonthAfterYear: true
+		});
+	});
+</script>
+</body>
+</html>
+```
+
