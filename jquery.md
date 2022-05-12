@@ -1821,3 +1821,12 @@ $(selector).on('click','button',function(){
 
 # `이벤트 객체`
 jquery도 자바스크립트 이벤트 객체와 비슷한 이벤트 객체가 존재
+
+```
+$("button:eq(0)").on("click",function(event){												
+	event.type; //click											
+	event.target; //target element											
+	event.preventDefault(); //기본 이벤트 방지											
+	event.stopPropagation(); //이벤트 버블링 방지											
+});		
+```
