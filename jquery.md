@@ -2330,4 +2330,161 @@ https://jqueryui.com/datepicker/
 </body>
 </html>
 ```
+<hr/>
 
+# `$.ajax() 메서드`
+
+AJAX(Asynchronous JavaScript and XML)
+
+웹페이지의 이동없이 현재 페이지에서 필요한 데이터만 로드 또는 전송하는 기술.
+
+비동기 방식 데이터 처리
+
+## 동기와 비동기
+```
+비동기 방식은 웹페이지를 리로드하지 않고 데이터를 불러오는 방식.
+페이지 리로드의 경우 전체 리소스를 다시 불러와야하는데 이미지, 스크립트, 기타 코드등을 모두 재요청할 경우 불필요한 리소스 낭비가 발생하게 된다.
+```
+`필요한 부분만 불러와 사용할 수 있다.`
+```
+client : 브라우저		server: tomcat
+```
+![18](https://user-images.githubusercontent.com/104181668/168002802-8f77d98d-2083-41b0-bfde-50bac628e8e7.png)
+```
+동기											비동기			
+```
+
+## ajax의 장점
+```
+웹페이지의 속도향상														
+서버의 처리가 완료될 때까지 기다리지 않고 처리가 가능하다.												
+서버에서 Data만 전송하면 되므로 전체적인 코딩의 양이 줄어든다.													
+기존 웹에서는 불가능했던 다양한 UI를 가능하게 해준다. 		
+```
+
+## ajax의 단점
+```
+히스토리 관리가 되지 않는다.
+페이지 이동없는 통신으로 인한 보안상의 문제가 있다.
+연속으로 데이터를 요청하면 서버 부하가 증가할 수 있다.
+XMLHttpRequest를 통해 통신하는 경우, 사용자에게 아무런 진행 정보가 주어지지 않는다. (요청이 완료되지 않았는데 사용자가 페이지를 떠나거나 오작동할 우려가 발생하게 된다.)
+AJAX를 쓸 수 없는 브라우저에 대한 문제 이슈가 있다.
+HTTP 클라이언트의 기능이 한정되어 있다.
+지원하는 Charset이 한정되어 있다.
+Script로 작성되므로 디버깅이 용이하지 않다.
+동일-출처 정책으로 인하여 다른 도메인과는 통신이 불가능하다. (Cross-Domain문제)
+```
+
+# AJAX가 쓰이는 방법
+```
+XMLHttpRequest 객체를 얻은 뒤, url을 통해 요청하고 응답을 받으면 응답 결과에 맞는 
+함수를 실행하는 구조로 되어 있다. Ajax가 효율적이라고는 해도 이렇게 하게 될 경우, 코드가 길어지기 때문에 	
+jQuery에서 그 문제를 해결해주고 있다.
+```
+
+/studyhtml/jq/jq03/jq08.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+	
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+    // AJAX
+	var oReq = new XMLHttpRequest();
+	var serverAddress = 'https://hacker-news.firebaseio.com/v0/topstories.json';
+	
+	// 서버 응답 처리
+	function reqListener(e){
+		console.log(`e.currentTarget.response: ${e.currentTarget.response}`);
+	} 
+	
+	// event 감지
+	oReq.addEventListener('load',reqListener);
+	oReq.open('get',serverAddress);
+	oReq.send();
+	
+</script>
+</body>
+</html>
+```
+
+## AJAX로 전환
+
+/studyhtml/jq/jq03/jq09.html
+```html
+ <!--Html comment-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="kewords" content="html, css, javascript, jsp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="/studyhtml/favicon.ico">
+<meta http-equiv="Expires" content="Mon, 01 Jan 2020 00:00:01 GMT"> 
+<!--위의 명시된 날짜 이후가 되면 페이지가 캐싱되지 않는다.(2020년 이후 쭉 ) --> 
+<meta http-equiv="Expires" content="-1"> 
+<!--캐시된 페이지가 만료되어 삭제되는 시간을 정의하나 특별한 경우가 아니면 -1로 설정--> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.0)-->  
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--페이지 로드시마다 페이지를 캐싱하지 않는다.(HTTP 1.1)--> 
+<!-- reset 스타일 시트 -->
+<!-- <link rel="stylesheet" type="text/css" href="/studyhtml/asset/css/reset.css"> -->
+<!-- 스타일 시트-->
+<style type = "text/css">
+</style>
+<title>Insert title here</title>
+<!-- jquery -->
+<script type="text/javascript" src="/studyhtml/asset/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+	<h2></h2>
+	<hr/>
+	
+<!-- 자바스크립트 코드 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+// 		console.log('PCWK *** document');
+        var serverAddress = 'https://hacker-news.firebaseio.com/v0/topstories.json';    // 서버 url
+    
+	    $.ajax({
+	    	url: serverAddress,   // 서버 url
+	    	type: 'GET',          // 서버 호출 방식
+	    	success: function(data){
+	    		console.log(`data: ${data}`);
+	    	},
+	    	error: function(xhr){
+	    		console.log(`xhr.stats: ${xhr.status}, ${xhr.responseText}`);
+	    	}
+	    });
+	});
+</script>
+</body>
+</html>
+```
+
+![19](https://user-images.githubusercontent.com/104181668/168008325-e39a25b7-4881-41f4-85b2-9694a93800f2.png)
