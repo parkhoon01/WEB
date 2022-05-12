@@ -1919,6 +1919,7 @@ $("button:eq(0)").on("click",function(event){
 </body>
 </html>
 ```
+<hr/>
 
 ## `preventDefault()와 stopPropagation()`
 
@@ -2086,5 +2087,6 @@ $("button:eq(0)").on("click",function(event){
 </body>
 </html>
 ```
+<hr/>
 
 # ``
