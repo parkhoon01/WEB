@@ -245,5 +245,123 @@ jsp내에서 선언하지 않고 사용하는 객체
 
 /studyhtml/jsp/j01/h06_request.jsp
 ```jsp
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%--
+    request내장 객체: 웹브라우저 요청에 대한 처리
+    - 클라이언트와 관련된 정보 읽기
+    - 서버와 관련된 정보
+    - 클라이언트가 요청한 전송 정보
+    - 클라이언트가 전송한 쿠키
+ --%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>request내장 객체</title>
+</head>
+<body>
+	<h2>request내장 객체</h2>
+	<hr/>
+	
+	서버 포트: <%=request.getServerPort() %><br/>
+	서버 이름: <%=request.getServerName() %><br/>
+	client ip: <%=request.getRemoteAddr() %><br/>
+	요청 protocol: <%=request.getProtocol() %><br/>
+	요청 context: <%=request.getContextPath() %><br/>
+	서버 URI: <%=request.getRequestURI() %>
+	<%--
+	request내장 객체
+	서버 포트: 8080
+	서버 이름: localhost
+	client ip: 0:0:0:0:0:0:0:1
+	요청 protocol: HTTP/1.1
+	요청 context: /studyhtml
+    서버 URI: /studyhtml/jsp/j01/h06_request.jsp
+	 --%>
+</body>
+</html>
 ```
+
+<hr/>
+
+# `h07_form.jsp -> h07_form_request.jsp`
+
+/studyhtml/jsp/j01/h07_form_request.jsp
+```jsp
+<%@page import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>request 처리</h2>
+	<hr/>
+	<%
+	   String userNm = request.getParameter("userNm");
+	   String userCell = request.getParameter("userCell");
+	   String lang = request.getParameter("lang");
+	   
+	%>
+	
+	이름: <%=userNm %><br/>
+	전화번호: <%=userCell %><br/>
+	<!--  다건 전송중 1건만 옴 -->
+    좋아하는 프로그램: <%=lang %><br/>
+	
+	<%
+	String[] langArray = request.getParameterValues("lang");
+	for(int i=0; i<langArray.length; i++){
+		out.println(langArray[i] + "<br/>");
+	}
+	%>
+	
+	변수 이름들 추출<br/>
+	<%
+	   Enumeration<String> names = request.getParameterNames();
+	   while(names.hasMoreElements()){
+		   String name = names.nextElement();
+		   out.println(name + ":" + request.getParameter(name) + "<br/>");
+	   }
+	%>
+</body>
+</html>
+```
+
+/studyhtml/jsp/j01/h07_form.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>form 요청</h2>
+	<hr/>
+	
+	<!-- http://localhost:8080/studyhtml/jsp/j01/h07_form_request.jsp?userNm=&userCell=&lang=10&lang=20 -->
+	<form action="/studyhtml/jsp/j01/h07_form_request.jsp" method="get">
+	   이름:<input type="text" name="userNm" size="10" /><br/>
+	   전화번호:<input type="text" name="userCell" size="10" /><br/>
+	   좋아하는 프로그램<br/>
+	   <input type="checkbox" name="lang" value="10" />java<br/>
+	   <input type="checkbox" name="lang" value="20" />oracle<br/>
+	   <input type="checkbox" name="lang" value="30" />jsp<br/>
+	   <input type="checkbox" name="lang" value="40" />jquery<br/>
+	   <input type="submit" value="전송" />
+	</form>
+	
+</body>
+</html>
+```
+
+## `response 메서드`
+
+사용자 요청에 대한 응답을 처리하기 위한 객체
