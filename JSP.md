@@ -47,11 +47,16 @@ jsp 또는 다른 서블릿간 데이터 공유가 쉽다.
 
 jsp페이지에 속성을 기술하는 곳으로 jsp 컨테이너에게 해당 페이지를 어떨게 처리해야 하는지 전달하기 위한 내용을 담고 있다.
 
-```
+```jsp
 <%@ page 속성='값' 속성='값 ... %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-language : 페이지에서 사용하는 언어
+language: 페이지에서 사용하는 언어
+contentType: jsp MIME
+pageEncoding: UTF-8, ecu-kr, ISO-8859-1
+import: java import와 동일
 ```
+
+
