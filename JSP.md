@@ -365,3 +365,191 @@ jsp내에서 선언하지 않고 사용하는 객체
 ## `response 메서드`
 
 사용자 요청에 대한 응답을 처리하기 위한 객체
+
+```
+getHeaderNames() 요청과 관련된 모든 해더의 이름을 구한다.													
+getHeader(name) 이름이 name인 해더의 값을 String으로 구한다.												
+getHeader(name) 이름이 name인 모든 헤더의 값을 String[]으로 구한다.										
+getIntHeader(name) 이름이 name인 헤더의 값을 int형으로 구한다.												
+getDateHeader(name) 이름이 name인 헤더의 값을 long형으로 구한다.	
+getCookies() 요청과 관련된 모든 쿠키를 구한다.
+getMethod() 요청 방식이 GET인지 POST인지 구한다.		
+```
+
+/studyhtml/jsp/j01/h08_request_header.jsp
+```jsp
+<%@page import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>request header정보</h2>
+	<hr/>
+	
+	<%
+	   Enumeration<String> names = request.getHeaderNames();
+	   while(names.hasMoreElements()){
+		   String headerName = names.nextElement();
+// 		   System.out.println("headerName: " + headerName);
+		    out.println(headerName + ":" + request.getHeader(headerName) + "<br/>");
+	   }
+	   out.println("<hr/>");
+	   String userAgent = request.getHeader("user-agent");
+	   String host = request.getHeader("host");
+	   out.println("userAgent: " + userAgent + "<br/>");
+	   out.println("host: " + host + "<br/>");
+	%>
+	
+</body>
+</html>
+```
+
+# `response 내장 객체`
+
+request 기본 객체와 반대의 기능을 수행
+
+웹 브라우저에 전송할 내용을 담을 수 있다.
+
+- 헤더입력: cache control
+```
+웹 캐시(영어: web cache) 또는 HTTP 캐시(HTTP cache)는 서버 지연을 줄이기 위해 웹 페이지, 
+이미지, 기타 유형의 웹 멀티미디어 등의 웹 문서들을 임시 저장하기 위한 정보기술이다.
+```
+
+/studyhtml/jsp/j01/h09_response_cache.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- 
+웹 캐시(영어: web cache) 또는 HTTP 캐시(HTTP cache)는 서버 지연을 줄이기 위해 웹 페이지, 
+이미지, 기타 유형의 웹 멀티미디어 등의 웹 문서들을 임시 저장하기 위한 정보기술이다.
+모든 jsp에 포함 가능: <jsp:include='' />
+<%@ include file = '' %>
+--%>
+
+<%
+	// Http 1.1에서 지원하는 헤더: 웹브라우저가 응답 결과를 캐시하지 않음
+    response.setHeader("Cache-Control", "no-cache");
+
+    // 웹 브라우저가 응답결과를 캐시하지 않음(앞/뒤로 가기 no-cache)
+    response.setHeader("Cache-Control", "no-store");
+    
+    // Http 1.0에서 지원하는 헤더: 웹브라우저가 응답 결과를 캐시하지 않음
+    response.setHeader("Pragma", "no-cache");
+ 
+     // Http 1.0에서 현재시간 이전으로 캐시하지 않음
+    response.setHeader("Expires", "1L");
+         
+     
+%>
+```
+
+# `include 지시어`
+
+현재 jsp 파일에 다른 html이나 jsp문서를 포함하기 위한 기능을 제공한다.
+
+```
+h10_1_footer.jsp를 h10_include.jsp에 포함
+```
+
+/studyhtml/jsp/j01/h10_1_footer.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    Copyright &copy; 2022 PCWK ALL rights reserved.	
+</body>
+</html>
+```
+
+/studyhtml/jsp/j01/h10_include.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="h09_response_cache.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>include 지시어 테스트</h2>
+	<hr/>
+	<%@ include file="h10_1_footer.jsp" %>
+</body>
+</html>
+```
+
+# `response를 이용한 페이지 이동`
+response에 리다이렉트
+
+리다이렉트는 웹서버가 웹브라우저에게 다른 페이지로 이동하라고 응답하는 기능.
+
+```
+ex)
+	response.sendRedirect("이동할 url");
+```
+
+```
+h11_response_redirect.jsp -> index.jsp 로그인 성공하면 index.jsp로 이동
+```
+
+/studyhtml/jsp/j01/h11_response_redirect.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	//http://localhost:8080/studyhtml/jsp/j01/h11_response_redirect.jsp?userId=pcwk
+	String userId = request.getParameter("userId");
+	System.out.println("userId: " + userId);
+	
+	if(null != userId && userId.equals("pcwk")){
+		response.sendRedirect("index.jsp");
+	}
+
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>response.sendRedirect</h2>
+	<hr/>
+	
+	<div>잘못된 아이디입니다.</div>
+</body>
+</html>
+```
+
+/studyhtml/jsp/j01/index.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>response.sendRedirect: 성공</h2>
+	<hr/>
+	
+</body>
+</html>
+```
+
