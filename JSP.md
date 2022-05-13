@@ -229,5 +229,21 @@ String[] str = {"jsp가","재미","있다"};
 
 jsp내에서 선언하지 않고 사용하는 객체
 
-![Uploading 20.png…]()
+![20](https://user-images.githubusercontent.com/104181668/168200304-bede22ff-e9a5-436f-8f20-ace23e499bea.png)
 
+## `request 메서드`
+
+사용자가 form에 입력한 param을 얻어낼 수 있는 기능
+
+|메서드|설명|
+|:---:|:---:|
+|String getParameter(name)|param name에 저장된 값을 추출, 없으면 null return|
+|String[] getParameterValues(name)|param name이 같은 변수들에 값들이 배열로 들어 온다.|
+|EnumerationgetParameterNames()|param으로 넘어오는 변수 name을 모두 추출 가능|
+|String getRemoteAddr()|client ip|
+
+
+/studyhtml/jsp/j01/h06_request.jsp
+```jsp
+
+```
