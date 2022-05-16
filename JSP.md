@@ -559,3 +559,38 @@ h11_response_redirect.jsp -> index.jsp 로그인 성공하면 index.jsp로 이�
 ![21](https://user-images.githubusercontent.com/104181668/168223445-03ec1458-7fcc-463b-9847-767ea52ade86.png)
 
 
+# `Servlet Life Cycle` 
+
+[Log4J] : https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.17.1
+
+<img width="285" alt="22" src="https://user-images.githubusercontent.com/104181668/168501140-b92b2d8f-7014-436a-8c33-79e89d9df921.png">
+
+## Servlet과 jsp의 역사
+
+1. Servlet
+2. jsp: Servlet의 단점인 view표현에 노력이 과다하게 들어간다.
+3. jsp의 단점: html, java, css, javascript 혼재되어 스파게티 코드 발생
+4. MVC(Model View Controller): Servlet Controller의 역활을 하게 된다. 
+
+
+url: /board/board.do![23](https://user-images.githubusercontent.com/104181668/168512860-fadd3cfe-1083-436f-97c1-6173a72c4000.png)
+```
+BoardController.java(Servlet)
+
+work_div	doSave
+		doRetrive
+		doSelectOne
+		doUpdate
+		doDelete
+```
+
+처리 방식
+```
+testForm.jsp(전송) -> Tomcat(WAS)
+		 -> BoardController.java	-> BoardDao.java	-> Oracle DB
+		 -> BoardController()		-> BoardDao()
+		 -> service()			-> doSave(BoardVO):1/0
+		 -> workDiv(doSave)
+		 -> doSave(HttpServletRequest)
+```
+
