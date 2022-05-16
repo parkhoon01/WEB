@@ -573,3 +573,24 @@ h11_response_redirect.jsp -> index.jsp 로그인 성공하면 index.jsp로 이�
 4. MVC(Model View Controller): Servlet Controller의 역활을 하게 된다. 
 
 
+url: /board/board.do![23](https://user-images.githubusercontent.com/104181668/168512860-fadd3cfe-1083-436f-97c1-6173a72c4000.png)
+```
+BoardController.java(Servlet)
+
+work_div	doSave
+		doRetrive
+		doSelectOne
+		doUpdate
+		doDelete
+```
+
+처리 방식
+```
+testForm.jsp(전송) -> Tomcat(WAS)
+		 -> BoardController.java	-> BoardDao.java	-> Oracle DB
+		 -> BoardController()		-> BoardDao()
+		 -> service()			-> doSave(BoardVO):1/0
+		 -> workDiv(doSave)
+		 -> doSave(HttpServletRequest)
+```
+
