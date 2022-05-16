@@ -1,0 +1,43 @@
+2022-05-16 12:30:36,908 DEBUG [main] cmn.PConnection   (PConnection.java:32)     - ClassNotFoundException : oracle.jdbc.driver.OracleDriver
+2022-05-16 12:30:36,911 DEBUG [main] board.BoardDao    (BoardDao.java:302)     - query : 
+ INSERT INTO board ( 
+     seq,            
+     title,          
+     contents,       
+     read_cnt,       
+     reg_id,         
+     mod_id          
+ ) VALUES (          
+     ?,              
+     ?,              
+     ?,              
+     ?,              
+     ?,              
+     ?               
+ )                   
+
+2022-05-16 12:30:36,912 DEBUG [main] board.BoardDao    (BoardDao.java:303)     - param : BoardVO [seq=900016, title=제목_900016, contents=내용_900016, readCnt=0, regDt=, regId=pcwk, modDt=, modId=pcwk, toString()=DTO [no=0]]
+2022-05-16 15:38:57,681 DEBUG [main] cmn.PConnection   (PConnection.java:29)     - connection : oracle.jdbc.driver.T4CConnection@6dde5c8c
+2022-05-16 15:38:57,686 DEBUG [main] board.BoardDao    (BoardDao.java:347)     - query : 
+ DELETE FROM BOARD 
+ WHERE SEQ = ?     
+
+2022-05-16 15:38:57,687 DEBUG [main] board.BoardDao    (BoardDao.java:348)     - param : BoardVO [seq=900016, title=제목_900016, contents=내용_900016, readCnt=0, regDt=, regId=pcwk, modDt=, modId=pcwk, toString()=DTO [no=0]]
+2022-05-16 15:38:58,088 DEBUG [main] board.BoardDao    (BoardDao.java:357)     - flag : 1
+2022-05-16 15:38:58,099 DEBUG [main] cmn.JDBCUtil      (JDBCUtil.java:29)     - PreparedStatement 자원반납
+2022-05-16 15:38:58,100 DEBUG [main] cmn.JDBCUtil      (JDBCUtil.java:41)     - Connection 자원반납
+2022-05-16 15:38:59,053 DEBUG [main] board.BoardMain   (BoardMain.java:38)     - ==================
+2022-05-16 15:38:59,055 DEBUG [main] board.BoardMain   (BoardMain.java:39)     - ======삭제 성공======
+2022-05-16 15:38:59,055 DEBUG [main] board.BoardMain   (BoardMain.java:40)     - ==================
+2022-05-16 15:39:00,445 DEBUG [main] cmn.PConnection   (PConnection.java:29)     - connection : oracle.jdbc.driver.T4CConnection@6a6afff2
+2022-05-16 15:39:00,446 DEBUG [main] board.BoardDao    (BoardDao.java:61)     - query : 
+  SELECT COUNT(*) totalCnt 
+ FROM BOARD               
+WHERE title LIKE ? ||'%'  OR contents LIKE ? ||'%'  
+2022-05-16 15:39:00,447 DEBUG [main] board.BoardDao    (BoardDao.java:62)     - param : SearchVO [searchDiv=40, searchWord=제목8, pageSize=10, pageNum=1, toString()=DTO [no=0]]
+2022-05-16 15:39:00,455 DEBUG [main] board.BoardDao    (BoardDao.java:85)     - SQLException : 인덱스에서 누락된 IN 또는 OUT 매개변수:: 2
+2022-05-16 15:39:00,456 DEBUG [main] cmn.JDBCUtil      (JDBCUtil.java:29)     - PreparedStatement 자원반납
+2022-05-16 15:39:00,456 DEBUG [main] cmn.JDBCUtil      (JDBCUtil.java:41)     - Connection 자원반납
+2022-05-16 15:39:00,469 DEBUG [main] board.BoardMain   (BoardMain.java:139)     - -----------------------
+2022-05-16 15:39:00,475 DEBUG [main] board.BoardMain   (BoardMain.java:140)     - ---- 총 글수 : 0
+2022-05-16 15:39:00,475 DEBUG [main] board.BoardMain   (BoardMain.java:141)     - -----------------------
