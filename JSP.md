@@ -2,7 +2,7 @@
 
 JSP,ASP,PHP
 
-jsp Java Server Page에 머리글자로써 썬에서 만든 자바 `서블릿` 기반 서버
+jsp Java Server Page의 머리글자로써 썬에서 만든 자바 `서블릿` 기반 서버
 
 스크립트 언어
 
@@ -593,4 +593,98 @@ testForm.jsp(전송) -> Tomcat(WAS)
 		 -> workDiv(doSave)
 		 -> doSave(HttpServletRequest)
 ```
+
+
+# `application 내장객체`
+
+application 기본 객체는 웹 어플리케이션 전반에 걸쳐서 사용되는 정보를 담고 있다.
+```
+ex) 서버정보, 서버초기화 정보 등
+```
+
+/studyhtml/jsp/j02/h01_application.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+// 서버 정보 읽기
+  
+
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>서버 정보 읽기</h2>
+	<hr/>
+	서블릿 정보: <%=application.getServerInfo() %><br/>
+	서블릿 규약 메이저 버전: <%=application.getMajorVersion() %><br/>
+    서블릿 규약 마이너 버전: <%=application.getMinorVersion() %><br/>
+	
+</body>
+</html>
+```
+
+web.xml
+```xml
+<context-param>
+    <description>파라메터 설명</description>
+    <param-name>파라메터 이름</param-name>
+    <param-value>파라메터 값</param-value>
+  </context-param>
+```
+
+/studyhtml/jsp/j02/h02_application.jsp
+```jsp
+<%@page import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>application param</h2>
+	<hr/>
+	
+<%
+// init param 변수이름 추출   
+    Enumeration<String> initParamNames = application.getInitParameterNames();
+    while(initParamNames.hasMoreElements()){
+    	String paramName = initParamNames.nextElement();
+    	String paramValue = application.getInitParameter(paramName);   // 초기화 파라메터의 값을 추출
+    	out.println("paramName: " + paramName + "=" + paramValue + "<br/>");
+    }
+
+%>
+</body>
+</html>
+```
+
+web.xml
+```xml
+<context-param>
+    <description>파라메터 설명</description>
+    <param-name>pcwk</param-name>
+    <param-value>a few good man</param-value>
+  </context-param>
+  
+  <context-param>
+    <description>파라메터 설명</description>
+    <param-name>class</param-name>
+    <param-value>cClass</param-value>
+  </context-param>
+```
+
+<img width="285" alt="24" src="https://user-images.githubusercontent.com/104181668/168703763-fb7bd6be-3703-40c7-bf59-329e8578baf9.png">
+
+
+# `웹상태 코드`
+
+https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C
 
