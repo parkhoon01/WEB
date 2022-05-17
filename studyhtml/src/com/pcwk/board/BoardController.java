@@ -2,17 +2,21 @@ package com.pcwk.board;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Param;
 import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.pcwk.cmn.MessageVO;
+import com.pcwk.cmn.SearchVO;
 import com.pcwk.cmn.StringUtil;
 
 /**
@@ -39,7 +43,7 @@ public class BoardController extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		work_div	doSave
-//					doRetrive
+//					doRetrieve
 //					doSelectOne
 //					doUpdate
 //					doDelete
@@ -54,12 +58,84 @@ public class BoardController extends HttpServlet {
 		// DAO 분기
 		switch(workDiv) {
 		
+		case "moveToReg":
+			moveToReg(request, response);
+			break;
+		
+		case "doRetrieve":
+			doRetrieve(request, response);
+			break;
+		
 		case "doSave":  //등록: http://localhost:8080/studyhtml/board/board.do?work_div=doSave
 			doSave(request, response);
 			break;
 		}
 		
+		
+		
 	}
+	
+	protected void moveToReg(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LOG.debug("==============================");
+		LOG.debug("=moveToReg()=");
+		LOG.debug("==============================");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/board/board_reg.jsp");
+		dispatcher.forward(request, response);
+		
+	}
+	
+	protected void doRetrieve(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// param read
+		LOG.debug("==============================");
+		LOG.debug("=doRetrieve()=");
+		LOG.debug("==============================");
+		
+		SearchVO param = new SearchVO();
+		// param to SearchVO
+//			searchDiv=""
+//			searchWord=""
+//			pageSize=10
+//			pageNum=1
+		String searchDiv = StringUtil.nvl(request.getParameter("searchDiv"),"");
+		String searchWord = StringUtil.nvl(request.getParameter("searchWord"),"");
+		String pageSize = StringUtil.nvl(request.getParameter("pageSize"),"10");
+		String pageNum = StringUtil.nvl(request.getParameter("pageNum"),"1");
+		LOG.debug("================================================");
+		LOG.debug("searchDiv: " + searchDiv);
+		LOG.debug("searchWord: " + searchWord);
+		LOG.debug("pageSize: " + pageSize);
+		LOG.debug("pageNum: " + pageNum);
+		LOG.debug("================================================");
+		
+		// param to SearchVO
+		param.setSearchDiv(searchDiv);
+		param.setSearchWord(searchWord);
+		param.setPageSize(Integer.parseInt(pageSize));
+		param.setPageNum(Integer.parseInt(pageNum));
+		LOG.debug("param: " + param.toString());
+		
+		// BoardDAO 호출
+		List<BoardVO> list = this.boardDao.doRetrieve(param);
+		// BoardDao 처리 return 받아 화면으로 전송
+		if(list.size() > 0) {
+			for(BoardVO vo : list) {
+				LOG.debug("vo : " + vo);
+			}
+		}
+		
+		// request에 list를 담아 전송
+		request.setAttribute("list", list);
+		// param
+		request.setAttribute("param", param);
+		
+		// 받을 url: /board/board_list.jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/board/board_list.jsp");	// contPath 생략
+		// data 전송
+		dispatcher.forward(request, response);
+		
+	}
+	
 	
 	protected void doSave(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOG.debug("==============================");

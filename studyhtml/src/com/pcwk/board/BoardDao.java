@@ -243,6 +243,7 @@ public class BoardDao implements WorkDiv<BoardVO> {
 			while(rs.next()) {
 				BoardVO outVO = new BoardVO();
 				outVO.setSeq(rs.getInt("SEQ"));
+				outVO.setNo(rs.getInt("NUM"));
 				outVO.setTitle(rs.getString("TITLE"));
 				outVO.setReadCnt(rs.getInt("READ_CNT"));
 				outVO.setModDt(rs.getString("MOD_DT"));
