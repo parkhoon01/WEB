@@ -636,3 +636,55 @@ web.xml
     <param-value>파라메터 값</param-value>
   </context-param>
 ```
+
+/studyhtml/jsp/j02/h02_application.jsp
+```jsp
+<%@page import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>application param</h2>
+	<hr/>
+	
+<%
+// init param 변수이름 추출   
+    Enumeration<String> initParamNames = application.getInitParameterNames();
+    while(initParamNames.hasMoreElements()){
+    	String paramName = initParamNames.nextElement();
+    	String paramValue = application.getInitParameter(paramName);   // 초기화 파라메터의 값을 추출
+    	out.println("paramName: " + paramName + "=" + paramValue + "<br/>");
+    }
+
+%>
+</body>
+</html>
+```
+
+web.xml
+```xml
+<context-param>
+    <description>파라메터 설명</description>
+    <param-name>pcwk</param-name>
+    <param-value>a few good man</param-value>
+  </context-param>
+  
+  <context-param>
+    <description>파라메터 설명</description>
+    <param-name>class</param-name>
+    <param-value>cClass</param-value>
+  </context-param>
+```
+
+<img width="285" alt="24" src="https://user-images.githubusercontent.com/104181668/168703763-fb7bd6be-3703-40c7-bf59-329e8578baf9.png">
+
+
+# `웹상태 코드`
+
+https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C
+
