@@ -707,3 +707,61 @@ include 방식
 액션은 실행 시점에 해당 파일을 수행하여 결과를 포함 시킨다.
 ```
 
+jsp/j03/top.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<a href="#">홈</a>
+<a href="#">정보</a>
+
+```
+
+jsp/j03/left.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+좌측 메뉴 : 
+
+```
+
+jsp/j03/bottom.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+하단 메뉴 :
+소개|도움말|약관|사이트맵
+```
+
+jsp/j03/layout.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>include: layout</title>
+</head>
+<body>
+	<h2>include layout</h2>
+	<hr/>
+	
+	<table width="400" border="1" cellpadding="0" cellspacin="0">
+	   <tr>
+	       <td colspan="2"><jsp:include page="/jsp/j03/top.jsp"></jsp:include></td>
+	   </tr>
+	   
+	   <tr>
+           <td width="100"><jsp:include page="/jsp/j03/left.jsp"></jsp:include></td>
+           <td width="300">contents<br/><br/><br/></td>
+       </tr>
+       
+       <tr>
+           <td colspan="2"><jsp:include page="/jsp/j03/bottom.jsp"></jsp:include></td>
+       </tr>
+	
+	</table>
+	
+</body>
+</html>
+```
