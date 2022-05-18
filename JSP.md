@@ -688,3 +688,170 @@ web.xml
 
 https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C
 
+
+
+# `include` 
+
+jsp에는 현재의 jsp파일에다 다른 파일(jsp, html)을 포함시켜 사용할 수 있다.
+
+header, footer, menu등을 나타날 때 사용
+
+```
+include 방식
+- 지시어 방식(include directive) : <%@ include file="/cmn/header.jsp" %>
+- 액션(include action) : <jsp:include page="/cmn/header.jsp" >  param을 전달 가능  <jsp:include page="/cmn/header.jsp" \>
+                                                                                   <jsp:param name="email" value="qkrgns0514@naver.com"/>
+									       </jsp:include>
+공통점은 동일하게 파일을 포함시킨다.
+차이점은 지시어는 해당 소스를 포함 시킨후 컴파일
+액션은 실행 시점에 해당 파일을 수행하여 결과를 포함 시킨다.
+```
+
+jsp/j03/top.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<a href="#">홈</a>
+<a href="#">정보</a>
+
+```
+
+jsp/j03/left.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+좌측 메뉴 : 
+
+```
+
+jsp/j03/bottom.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+하단 메뉴 :
+소개|도움말|약관|사이트맵
+```
+
+jsp/j03/layout.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>include: layout</title>
+</head>
+<body>
+	<h2>include layout</h2>
+	<hr/>
+	
+	<table width="400" border="1" cellpadding="0" cellspacin="0">
+	   <tr>
+	       <td colspan="2"><jsp:include page="/jsp/j03/top.jsp"></jsp:include></td>
+	   </tr>
+	   
+	   <tr>
+           <td width="100"><jsp:include page="/jsp/j03/left.jsp"></jsp:include></td>
+           <td width="300">contents<br/><br/><br/></td>
+       </tr>
+       
+       <tr>
+           <td colspan="2"><jsp:include page="/jsp/j03/bottom.jsp"></jsp:include></td>
+       </tr>
+	
+	</table>
+	
+</body>
+</html>
+```
+
+
+```
+<jsp:include page="/cmn/header.jsp" \>
+        <jsp:param name="email" value="qkrgns0514@naver.com"/>
+</jsp:include>
+
+info.jsp (부르기)=> infoSub.jsp
+```
+
+jsp/j03/j03_01/infoSub.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String type = request.getParameter("type");
+if(null == type){
+	return;
+}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>type: <%=type %></h2>
+	<hr/>
+	
+</body>
+</html>
+```
+
+jsp/j03/j03_01/info.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2></h2>
+	<hr/>
+	<jsp:include page="/jsp/j03/j03_01/infoSub.jsp">
+	   <jsp:param value="rain day!" name="type"/>
+	</jsp:include>
+</body>
+</html>
+```
+
+```
+request.setAttribute("변수","값"):
+
+<jsp:forward page = "대상.jsp" />
+
+makeTime.jsp
+viewTime.jsp
+```
+
+jsp/j03/j03_02/makeTime.jsp
+```jsp
+<%@page import="java.util.Calendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+Calendar cal = Calendar.getInstance();
+request.setAttribute("time", cal);
+%>
+
+<jsp:forward page="viewTime.jsp"></jsp:forward>
+```
+
+jsp/j03/j03_02/viewTime.jsp
+```jsp
+<%@page import="java.util.Calendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+Calendar cal= (Calendar)request.getAttribute("time");
+out.print("현재시간: " + cal.get(Calendar.HOUR)
+                    + ": " + cal.get(Calendar.MINUTE)
+                    + ": " + cal.get(Calendar.SECOND)
+		);
+
+%>
+```
