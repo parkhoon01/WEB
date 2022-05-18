@@ -688,3 +688,22 @@ web.xml
 
 https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C
 
+
+
+# `include` 
+
+jsp에는 현재의 jsp파일에다 다른 파일(jsp, html)을 포함시켜 사용할 수 있다.
+
+header, footer, menu등을 나타날 때 사용
+
+```
+include 방식
+- 지시어 방식(include directive) : <%@ include file="/cmn/header.jsp" %>
+- 액션(include action) : <jsp:include page="/cmn/header.jsp" >  param을 전달 가능  <jsp:include page="/cmn/header.jsp" \>
+                                                                                   <jsp:param name="email" value="qkrgns0514@naver.com"/>
+									       </jsp:include>
+공통점은 동일하게 파일을 포함시킨다.
+차이점은 지시어는 해당 소스를 포함 시킨후 컴파일
+액션은 실행 시점에 해당 파일을 수행하여 결과를 포함 시킨다.
+```
+
