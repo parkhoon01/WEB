@@ -818,3 +818,40 @@ jsp/j03/j03_01/info.jsp
 </body>
 </html>
 ```
+
+```
+request.setAttribute("변수","값"):
+
+<jsp:forward page = "대상.jsp" />
+
+makeTime.jsp
+viewTime.jsp
+```
+
+jsp/j03/j03_02/makeTime.jsp
+```jsp
+<%@page import="java.util.Calendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+Calendar cal = Calendar.getInstance();
+request.setAttribute("time", cal);
+%>
+
+<jsp:forward page="viewTime.jsp"></jsp:forward>
+```
+
+jsp/j03/j03_02/viewTime.jsp
+```jsp
+<%@page import="java.util.Calendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+Calendar cal= (Calendar)request.getAttribute("time");
+out.print("현재시간: " + cal.get(Calendar.HOUR)
+                    + ": " + cal.get(Calendar.MINUTE)
+                    + ": " + cal.get(Calendar.SECOND)
+		);
+
+%>
+```
