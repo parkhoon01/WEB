@@ -855,3 +855,141 @@ out.print("현재시간: " + cal.get(Calendar.HOUR)
 
 %>
 ```
+
+
+# `자바빈`
+
+속성(데이터), 변경 이벤트, 객체직렬화를 위한 표준
+
+jsp에서는 속성을 표현하기 위한 용도로 사용된다.
+
+자바의 VO객체와 비슷
+
+```
+MemeberInfo.java
+memberSignFrom.jsp
+processJoining.jsp
+```
+
+jsp/j04/memberSignForm.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>회원가입 입력 폼</h2>
+	<hr/>
+	<form action="processJoining.jsp" method="post">
+		아이디:<input type="text" name="id"><br/>
+		이름:<input type="text" name="name"><br/>
+		이메일:<input type="text" name="email"><br/>
+		<input type="submit" value="회원가입">
+	</form>
+	
+</body>
+</html>
+```
+
+jsp/j04/processJoining.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
+<!-- MemberInfo memberInfo=new MemberInfo() -->
+<jsp:useBean id="memberInfo" class="com.pcwk.j04.MemberInfo"/>
+<!-- MemberInfo set에 값을 매핑 -->
+<jsp:setProperty name="memberInfo" property="*"/>
+<!-- 비번 -->
+<jsp:setProperty name="memberInfo" property="password" value="<%=memberInfo.getId() %>"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>회원가입 정보</h2>
+	<hr/>
+    아이디:<%=memberInfo.getId() %><br/>
+    이름:<%=memberInfo.getName() %><br/>
+    이메일:<%=memberInfo.getEmail() %><br/>
+    비번:<jsp:getProperty property="password" name="memberInfo"/>
+	
+</body>
+</html>
+```
+
+j04/MemberInfo.java
+```java
+package com.pcwk.j04;
+
+public class MemberInfo {
+	
+	private String id;				// 회원 ID
+	private String password;		// 회원 비번
+	private String name;			// 이름
+	private String registerDate;	// 가입일
+	private String email;			// 이메일
+	
+	public MemberInfo() {}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberInfo [id=" + id + ", password=" + password + ", name=" + name + ", registerDate=" + registerDate
+				+ ", email=" + email + "]";
+	}
+	
+	
+	
+	
+}
+
+```
