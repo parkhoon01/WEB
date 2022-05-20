@@ -1063,3 +1063,86 @@ lib
 </resource-ref>
 ```
 
+/studyhtml/src/com/pcwk/cmn/PConnection.java
+```java
+private DataSource dataSource;
+	
+	public PConnection() {
+		// DataSource의 객체생성
+		
+		// 이름으로 객체 접근
+		try {
+			Context ctx = new InitialContext();
+			
+			Context envContext = (Context) ctx.lookup("java:/comp/env");
+			LOG.debug("1. envContext: " + envContext);
+			
+			dataSource = (DataSource) envContext.lookup("jdbc/oracle");
+			LOG.debug("2. dataSource: " + dataSource);
+			
+		} catch (NamingException e) {
+			LOG.debug("-----------------------");
+			LOG.debug("NamingException: " + e.getMessage());
+			e.printStackTrace();
+			LOG.debug("-----------------------");
+		}
+	}
+	
+	public Connection connect() {
+		
+		Connection connection = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			LOG.debug("**. connection: " + connection);
+		} catch (SQLException e) {
+			LOG.debug("-----------------------");
+			LOG.debug("SQLException: " + e.getMessage());
+			e.printStackTrace();
+			LOG.debug("-----------------------");
+		}
+		
+		
+		return connection;
+	}
+```
+
+<hr/>
+
+# `쿠키(Cookie)`
+
+```
+웹 사용자가 요청하고 서버가 응답하면 연결이 끊긴다.
+연결 정보를 웹 브라우저(Client)에 보관하는 데이터
+JSP에서 쿠키를 생성할 때에는 Cookie클래스를 사용한다.
+```
+
+![28](https://user-images.githubusercontent.com/104181668/169430366-11a13375-8054-42f0-b33a-d49a88e1fc37.png)
+
+```jsp
+<%@page import="javax.servlet.http.Cookie"%>
+<%@page import="java.net.URLEncoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%                          //  이름, 값
+   Cookie cookie = new Cookie("pcwk",URLEncoder.encode("오늘은 즐거운 금요일 입니다.","UTF-8"));
+   response.addCookie(cookie);
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>쿠키 생성</h2>
+	<hr/>
+	
+</body>
+</html>
+```
+
+<img width="639" alt="29" src="https://user-images.githubusercontent.com/104181668/169431426-d77fae57-f656-4fd0-933d-0b5ec0c39521.png">
+
+
+
