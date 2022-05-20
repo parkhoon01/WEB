@@ -1010,14 +1010,56 @@ public class MemberInfo {
 사용함으로써 고객과 개발자가 요구사항에 대한 의견을 조율 할 수 있다.
 
 
+<hr/>
+
 # `Connection Pool`
 
 웹 컨테이너(WAS)가 실행이 되면 DB에서 미리 Connection 객체들을 Pool에 저장해 두었다가 클라이언트 요청이 들어오면 Connection을 주고, 처리가 끝나면 다시 Connection을 반납
 
+![27](https://user-images.githubusercontent.com/104181668/169425117-febf5540-1218-49ff-8d2d-d3cbe6130db0.png)
+
+
 ```
 lib
    commons-dbcp-1.4jar
-
-context.xml
-web.xml
 ```
+[commons-dbcp-1.4jar] : https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp/1.4
+
+<img width="894" alt="26" src="https://user-images.githubusercontent.com/104181668/169424966-3adb2018-d456-44b8-8219-efeacf5f4cac.png">
+
+
+/studyhtml/WebContent/META-INF/context.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+                                 -->
+  <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+  <Resource name="jdbc/oracle" 
+    auth="Container" 
+    type="javax.sql.DataSource"
+    driverClassName="oracle.jdbc.driver.OracleDriver"
+    factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+    url="jdbc:oracle:thin:@192.168.3.101:1521:xe"
+    username="scott" 
+    password="pcwk" 
+    maxActive="100" 
+    maxIdle="30" 
+    maxWait="10000"
+    removeAbandoned="true" 
+    removeAbandonedTimeout="60"/> 
+</Context>
+```
+
+
+
+/studyhtml/WebContent/WEB-INF/web.xml
+```xml
+<resource-ref>
+      <description>jdbc/oracle</description><!-- 리소스 설명 -->
+      <res-ref-name>jdbc/oracle</res-ref-name><!-- 리소스 이름(JNDI명) -->
+      <res-type>javax.sql.DataSource</res-type><!-- 리턴 Type -->
+      <res-auth>Container</res-auth><!-- 관리 계층 -->
+</resource-ref>
+```
+
