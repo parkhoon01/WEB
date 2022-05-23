@@ -32,7 +32,7 @@
 	   <input type="button" value="전송" onclick="doSave();"/>
 	</div>
 	<form action="<%=contPath %>/board/board.do" name="boardFrm" id="boardFrm">
-	   작업구분:<input type="hidden" name="work_div" id="work_div" value="doSave"><br/>
+	   <input type="hidden" name="work_div" id="work_div" value="doSave"><br/>
 	   SEQ:<input type="text" name="seq" id="seq"><br/>
 	   제목:<input type="text" name="title" id="title" maxlength="200"><br/>
 	   등록자:<input type="text" name="reg_id" id="reg_id" maxlength="20"><br/>

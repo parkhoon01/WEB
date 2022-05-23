@@ -22,15 +22,22 @@
   </servlet-mapping>
   
   <context-param>
-    <description>파라메터 설명</description>
+    <description>파라메터 설정</description>
     <param-name>pcwk</param-name>
     <param-value>a few good man</param-value>
   </context-param>
   
   <context-param>
-    <description>파라메터 설명</description>
+    <description>파라메터 설정</description>
     <param-name>class</param-name>
     <param-value>cClass</param-value>
   </context-param>
+  
+    <resource-ref>
+      <description>jdbc/oracle</description><!-- 리소스 설명 -->
+      <res-ref-name>jdbc/oracle</res-ref-name><!-- 리소스 이름(JNDI명) -->
+      <res-type>javax.sql.DataSource</res-type><!-- 리턴 Type -->
+      <res-auth>Container</res-auth><!-- 관리 계층 -->
+    </resource-ref>
   
 </web-app>

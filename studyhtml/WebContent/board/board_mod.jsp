@@ -30,6 +30,7 @@
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-1.12.4.js"></script>
 <!-- jQuery UI -->
 <script type="text/javascript" src="<%=contPath %>/asset/js/jquery-ui.js"></script>
+<script type="text/javascript" src="<%=contPath %>/asset/js/common.js"></script>
 
 </head>
 <body>
@@ -41,8 +42,8 @@
 	   <input type="button" value="목록" id="moveToList">
 	</div>
 	<form action="<%=contPath %>/board/board.do" name="boardFrm" id="boardFrm">
-	   <input type="text" name="seq" id="seq" value="<%=vo.getSeq()%>">
-	   <input type="text" name="work_div" id="work_div">
+	   <input type="hidden" name="seq" id="seq" value="<%=vo.getSeq()%>">
+	   <input type="hidden" name="work_div" id="work_div">
 	   <table widht="600">
 	       <tr>
 	           <td width="100">제목</td>
@@ -81,7 +82,7 @@
 		   console.log('#doUpdate'); 
 		   
 		   let title = $('#title').val();
-		   if(null == title || title.trim().length == 0){
+		   if(isEmpty(title)|| title.trim().length == 0){
 			   $('#title').focus();
 			   alert('제목을 입력하세요.');
 			   return;
@@ -89,7 +90,7 @@
 		   title = title.trim();
 		   
 		   let modId = $('#mod_id').val();
-		   if(null == modId || modId.trim().length == 0){
+		   if(isEmpty(modId) || modId.trim().length == 0){
 			   $('#mod_id').focus();
 			   alert('수정자 ID를 입력하세요.');
 			   return;
@@ -97,7 +98,7 @@
 		   modId = modId.trim();
 		   
 		   let contents = $('#contents').val();
-		   if(null == contents || contents.trim().length == 0){
+		   if(isEmpty(contents) || contents.trim().length == 0){
 			   $('#contents').focus();
 			   alert('내용을 입력하세요.');
 			   return;
@@ -120,6 +121,16 @@
 	            },
 	            success:function(data){//통신 성공
 	                console.log("success data:"+data);
+	                // String to Json
+	                const jsonObj = JSON.parse(data);
+	                
+	                if(!isEmpty(jsonObj) && jsonObj.messageId == "1"){
+	                	alert(jsonObj.msgContents);
+	                	goList();
+	                }
+	                else{
+	                	alert(jsonObj.msgContents);
+	                }
 	            },
 	            error:function(data){//실패시 처리
 	                console.log("error:"+data);
